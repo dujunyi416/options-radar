@@ -6,6 +6,15 @@ on:
     # 即 UTC 周日 22:00. 用非整点避开 cron 拥挤
     - cron: "13 22 * * 0"
   workflow_dispatch:
+    inputs:
+      ignore_seen:
+        description: "忽略 seen.json (重抓全部, 包括之前已推过的; 用于补推或验证 agenda)"
+        type: boolean
+        default: false
+      window_days:
+        description: "时间窗口 (天). 留空使用 sources.yaml 默认值 7"
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -38,6 +47,9 @@ jobs:
           npm install -g @anthropic-ai/claude-code
 
       - name: Fetch sources
+        env:
+          IGNORE_SEEN: ${{ inputs.ignore_seen && '1' || '' }}
+          WINDOW_DAYS: ${{ inputs.window_days }}
         run: python src/fetch.py
 
       - name: Rank with Claude
@@ -56,6 +68,11 @@ jobs:
         # 生成 data/{YYYY-Www}.md, 人读归档, GitHub 自动渲染. 失败不影响发布.
         if: always()
         run: python src/render_archive.py || true
+
+      - name: Update archive index
+        # 从 data/archive.jsonl 生成 data/INDEX.md (按周分组, 时间倒序的全量论文档案)
+        if: always()
+        run: python src/render_index.py || true
 
       - name: Compute week tag
         id: week

@@ -12,6 +12,7 @@ HTTP 失败带指数退避重试 (5xx / 429 / 连接错误), 避免单次瞬时�
 
 import hashlib
 import json
+import os
 import re
 import sys
 import time
@@ -28,6 +29,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SEEN_PATH = ROOT / "state" / "seen.json"
 OUT_PATH = ROOT / "out" / "candidates.json"
 REPORT_PATH = ROOT / "out" / "fetch_report.json"
+ARCHIVE_PATH = ROOT / "data" / "archive.jsonl"     # 全量永久档案 (命中关键词的论文)
 SEEN_TTL_DAYS = 60
 
 FETCH_TIMEOUT = 30
@@ -331,15 +333,20 @@ ADAPTERS = {
 
 def main() -> int:
     config = yaml.safe_load((ROOT / "config" / "sources.yaml").read_text(encoding="utf-8"))
-    window_days = config.get("window_days", 7)
+    # env 覆盖 (用于手动触发时调整): WINDOW_DAYS=14, IGNORE_SEEN=1
+    window_days = int(os.environ.get("WINDOW_DAYS") or config.get("window_days", 7))
     max_candidates = config.get("max_candidates", 80)
     contact_email = config.get("contact_email", "anonymous@example.com")
     ua = USER_AGENT_TMPL.format(email=contact_email)
+    ignore_seen = os.environ.get("IGNORE_SEEN", "").strip().lower() in ("1", "true", "yes")
 
     now = datetime.now(timezone.utc)
     since = now - timedelta(days=window_days)
     seen = load_seen()
     kw = load_keywords()
+    if ignore_seen:
+        print(f"[info] IGNORE_SEEN=1, bypassing dedup against {len(seen)} seen entries "
+              f"(seen.json 仍然会被刷新, 下周 cron 不会重复推)", file=sys.stderr)
 
     candidates: list[dict] = []
     failed_sources: list[str] = []
@@ -363,7 +370,7 @@ def main() -> int:
         for it in raw_items:
             counts["after_window"] += 1
             key = stable_key(it.get("doi"), it.get("arxiv_id"), it["url"], it["title"])
-            if key in seen:
+            if key in seen and not ignore_seen:
                 continue
             counts["after_dedup"] += 1
             keep, tags = filter_paper(it["title"], it["summary"], kw)
@@ -407,10 +414,55 @@ def main() -> int:
         encoding="utf-8",
     )
     save_seen(seen)
+
+    # 永久档案: 所有命中关键词的论文 append 到 data/archive.jsonl (dedup by key,
+    # 保留首次见到的 first_seen_ts). 用户可在 GitHub 上点开搜索/浏览历史.
+    existing_archive: dict[str, dict] = {}
+    if ARCHIVE_PATH.exists():
+        for line in ARCHIVE_PATH.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                try:
+                    prev = json.loads(line)
+                    existing_archive[prev["key"]] = prev
+                except (json.JSONDecodeError, KeyError):
+                    continue
+    n_new = 0
+    for c in candidates:
+        row = {
+            "key": c["key"],
+            "title": c["title"],
+            "source": c["source"],
+            "venue": c.get("venue", ""),
+            "url": c["url"],
+            "doi": c.get("doi"),
+            "arxiv_id": c.get("arxiv_id"),
+            "authors": c.get("authors", ""),
+            "published_ts": c.get("published_ts"),
+            "first_seen_ts": c["fetched_ts"],
+            "tags": c.get("tags", []),
+            "summary": (c.get("summary") or "")[:2000],
+        }
+        if c["key"] in existing_archive:
+            # 保留首次见到的时间, 其余字段允许更新 (tags 可能因 keyword 扩充而变)
+            row["first_seen_ts"] = existing_archive[c["key"]]["first_seen_ts"]
+        else:
+            n_new += 1
+        existing_archive[c["key"]] = row
+    ARCHIVE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    # 按 first_seen_ts 倒序写, 最近的在最上方
+    sorted_archive = sorted(
+        existing_archive.values(),
+        key=lambda r: r.get("first_seen_ts") or "",
+        reverse=True,
+    )
+    with ARCHIVE_PATH.open("w", encoding="utf-8") as f:
+        for row in sorted_archive:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+
     print(
         f"[done] {len(candidates)} candidates "
         f"(raw {counts['raw']} -> dedup {counts['after_dedup']} -> kw {counts['after_keyword']}) "
-        f"-> {OUT_PATH.relative_to(ROOT)}"
+        f"-> {OUT_PATH.relative_to(ROOT)}; archive: +{n_new} new -> {len(existing_archive)} total"
     )
     return 0
 
