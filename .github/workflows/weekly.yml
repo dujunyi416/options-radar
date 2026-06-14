@@ -64,6 +64,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # data/ 在 0 candidates 周不会被 brief.py 创建; 兜底建一下避免 pathspec 错
+          mkdir -p data state
           git add data state
           git diff --cached --quiet || git commit -m "data: ${{ steps.week.outputs.iso_week }}"
           git pull --rebase origin main
