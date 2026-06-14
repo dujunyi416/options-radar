@@ -1,0 +1,108 @@
+# 学术论文来源。每周一抓取过去 7 天的新论文。
+# fetch.py 会按 type 路由到对应的 adapter (arxiv | crossref | repec)。
+# 死源只会告警不会让运行失败。
+
+window_days: 7
+max_candidates: 80         # 关键词预筛后送给 Claude 的硬上限
+contact_email: dujunyi416@gmail.com   # Crossref polite UA 要求
+
+sources:
+  # ---- arXiv q-fin (主力, 最新最前沿) ----
+  - name: arXiv q-fin.PR
+    type: arxiv
+    category: q-fin.PR        # Pricing of Securities, 核心
+    cap: 50
+    topic: arxiv
+
+  - name: arXiv q-fin.MF
+    type: arxiv
+    category: q-fin.MF        # Mathematical Finance
+    cap: 30
+    topic: arxiv
+
+  - name: arXiv q-fin.CP
+    type: arxiv
+    category: q-fin.CP        # Computational Finance
+    cap: 30
+    topic: arxiv
+
+  - name: arXiv q-fin.RM
+    type: arxiv
+    category: q-fin.RM        # Risk Management (次要)
+    cap: 15
+    topic: arxiv
+
+  # ---- 顶级期刊 (Crossref by ISSN) ----
+  - name: Journal of Finance
+    type: crossref
+    issn: "1540-6261"
+    cap: 10
+    topic: top_journal
+
+  - name: Journal of Financial Economics
+    type: crossref
+    issn: "0304-405X"
+    cap: 10
+    topic: top_journal
+
+  - name: Review of Financial Studies
+    type: crossref
+    issn: "1465-7368"
+    cap: 10
+    topic: top_journal
+
+  - name: Mathematical Finance
+    type: crossref
+    issn: "1467-9965"
+    cap: 10
+    topic: top_journal
+
+  - name: Finance and Stochastics
+    type: crossref
+    issn: "1432-1122"
+    cap: 10
+    topic: top_journal
+
+  - name: Quantitative Finance
+    type: crossref
+    issn: "1469-7696"
+    cap: 10
+    topic: top_journal
+
+  - name: Journal of Derivatives
+    type: crossref
+    issn: "1074-1240"
+    cap: 10
+    topic: top_journal
+
+  - name: Review of Derivatives Research
+    type: crossref
+    issn: "1573-7144"
+    cap: 10
+    topic: top_journal
+
+  - name: Journal of Computational Finance
+    type: crossref
+    issn: "1755-2850"
+    cap: 10
+    topic: top_journal
+
+  - name: Journal of Banking and Finance
+    type: crossref
+    issn: "0378-4266"
+    cap: 10
+    topic: top_journal
+
+  # ---- RePEc NEP 周报 (working papers 综合) ----
+  # NEP 周报通常周一发布, URL 包含日期; fetch.py 会自动定位最近一期
+  - name: NEP Financial Markets
+    type: repec
+    nep_list: nep-fmk
+    cap: 20
+    topic: working_paper
+
+  - name: NEP Risk Management
+    type: repec
+    nep_list: nep-rmg
+    cap: 15
+    topic: working_paper

@@ -1,0 +1,9 @@
+# personalized runtime output (含 agenda 注入后的 why_zh, 不入仓库)
+out/
+
+__pycache__/
+*.pyc
+.env
+
+# 个人 agenda, 永远不入仓库
+agenda.md

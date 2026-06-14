@@ -1,0 +1,75 @@
+# 关键词预筛配置。fetch.py 在标题 + 摘要上做大小写不敏感的词边界匹配。
+# 任一 core/long_dated/methodology 命中即保留。任一 exclude 命中即丢弃 (优先级最高)。
+# 命中 long_dated 词的论文在 candidates.json 里会被打上 "⭐long-dated" tag, 透传给 Claude。
+
+core:                # 期权/衍生品主题词
+  - option
+  - options
+  - derivative
+  - derivatives
+  - swaption
+  - VIX
+  - variance swap
+  - volatility swap
+  - implied volatility
+  - volatility surface
+  - volatility smile
+  - term structure of volatility
+  - vol surface
+  - option pricing
+
+long_dated:          # 长期期权专项 — 命中会加 ⭐ tag
+  - long-dated
+  - long dated
+  - long-maturity
+  - long maturity
+  - long-term option
+  - long-term options
+  - LEAPS
+  - longevity
+  - structural credit
+  - embedded option
+  - guaranteed minimum
+  - variable annuity
+  - variable annuities
+  - GMWB
+  - GMAB
+  - GMxB
+  - equity-linked
+  - equity linked insurance
+  - pension option
+
+methodology:         # 定价方法 / 数值技术 — 不一定显式提到 option, 但是常用工具
+  - stochastic volatility
+  - rough volatility
+  - jump-diffusion
+  - jump diffusion
+  - regime-switching
+  - regime switching
+  - Heston
+  - SABR
+  - local volatility
+  - neural network pricing
+  - deep hedging
+  - deep learning option
+  - exotic option
+  - exotic options
+  - American option
+  - American options
+  - Bermudan
+  - barrier option
+  - barrier options
+  - Asian option
+  - Asian options
+  - lookback option
+  - cliquet
+  - autocallable
+  - structured product
+
+exclude:             # 命中则丢弃 — 同名但不相关方向
+  - real option
+  - real options
+  - executive stock option
+  - executive compensation
+  - employee stock option
+  - ESO

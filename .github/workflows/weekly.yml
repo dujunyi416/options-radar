@@ -1,0 +1,84 @@
+name: weekly-radar
+
+on:
+  schedule:
+    # 目标 周一 08:00 布里斯班 (AEST = UTC+10, 全年无 DST)
+    # 即 UTC 周日 22:00. 用非整点避开 cron 拥挤
+    - cron: "13 22 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: weekly-radar
+  cancel-in-progress: false
+
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          npm install -g @anthropic-ai/claude-code
+
+      - name: Fetch sources
+        run: python src/fetch.py
+
+      - name: Rank with Claude
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          AGENDA: ${{ secrets.AGENDA }}
+        run: python src/brief.py
+
+      - name: Push to Feishu
+        env:
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+          FEISHU_KEYWORD: ${{ secrets.FEISHU_KEYWORD }}
+        run: python src/push.py
+
+      - name: Compute week tag
+        id: week
+        run: echo "iso_week=$(date -u +%Y-W%V)" >> "$GITHUB_OUTPUT"
+
+      # 邮件渠道暂未启用. 想加的话: 配 SMTP_USER + SMTP_PASS secret 后
+      # 在这里加 dawidd6/action-send-mail step, 用 file://out/email.html 作 body.
+      # render_email.py 仍可手动运行作本地 preview.
+
+      - name: Commit dataset + state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data state
+          git diff --cached --quiet || git commit -m "data: ${{ steps.week.outputs.iso_week }}"
+          git pull --rebase origin main
+          git push
+
+      # 反静默死亡: 任一步挂了都要在飞书留下尸检入口
+      - name: Alert on failure
+        if: failure()
+        env:
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+          FEISHU_KEYWORD: ${{ secrets.FEISHU_KEYWORD }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          MSG="⚠️ Options Radar ${FEISHU_KEYWORD} 本周运行失败, 点开看日志: ${RUN_URL}"
+          if [ -n "$FEISHU_WEBHOOK_URL" ]; then
+            curl -sf -X POST "$FEISHU_WEBHOOK_URL" -H 'Content-Type: application/json' \
+              -d "{\"msg_type\":\"text\",\"content\":{\"text\":\"${MSG}\"}}" || true
+          fi
