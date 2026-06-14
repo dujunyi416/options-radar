@@ -14,6 +14,8 @@ import requests
 ROOT = Path(__file__).resolve().parent.parent
 BRIEF_PATH = ROOT / "out" / "brief.json"
 REPORT_PATH = ROOT / "out" / "fetch_report.json"
+PUSHED_PATH = ROOT / "state" / "pushed.json"
+PUSHED_TTL_DAYS = 90        # 90 天后允许重推 (论文很少 3 个月后还想看)
 
 SECTION_TITLES = {
     "must_read":      "🎯 必读",
@@ -167,6 +169,34 @@ def push_feishu(brief: dict, date_str: str) -> bool | None:
     return True
 
 
+def mark_pushed(brief: dict) -> int:
+    """成功推送后, 把本次 brief 里所有 item 的 key 加入 state/pushed.json (TTL 90 天).
+    下次 fetch.py 会用 pushed.json 排除这些论文, 实现 "下一档" 语义."""
+    keys: list[str] = []
+    for section in SECTION_ORDER:
+        for item in brief.get(section, []):
+            k = item.get("key")
+            if k:
+                keys.append(k)
+    if not keys:
+        return 0
+    pushed: dict = {}
+    if PUSHED_PATH.exists():
+        try:
+            pushed = json.loads(PUSHED_PATH.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            pass
+    now_ts = datetime.now(timezone.utc).timestamp()
+    for k in keys:
+        pushed[k] = now_ts
+    # TTL 剪枝, 防止 pushed.json 无限增长
+    cutoff = now_ts - PUSHED_TTL_DAYS * 86400
+    pushed = {k: v for k, v in pushed.items() if v >= cutoff}
+    PUSHED_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PUSHED_PATH.write_text(json.dumps(pushed, indent=0), encoding="utf-8")
+    return len(keys)
+
+
 def main() -> int:
     brief = json.loads(BRIEF_PATH.read_text(encoding="utf-8"))
     is_empty = not brief or not any(brief.get(s) for s in SECTION_ORDER)
@@ -189,10 +219,14 @@ def main() -> int:
     except Exception as exc:  # noqa: BLE001
         print(f"[error] push_feishu: {exc}", file=sys.stderr)
         result = False
-    # 三态: True=成功(0), False=配置了但推送失败(1, 触发 workflow alert),
-    #       None=未配置(0, 静默跳过 — 邮件渠道仍会发)
+    # 三态: True=成功, False=配置了但推送失败(1, 触发 workflow alert),
+    #       None=未配置(静默跳过)
     if result is False:
         return 1
+    # 推送成功 (True) 或未配置 (None) — 后者也算交付 (本地 dry-run 时), mark 一次
+    # 避免下次重复推. degraded outage brief 没有 items, mark 是 no-op, OK.
+    n_marked = mark_pushed(brief)
+    print(f"[done] marked {n_marked} keys as pushed")
     return 0
 
 

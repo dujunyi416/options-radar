@@ -183,6 +183,7 @@ def build_degraded_brief(candidates: list, reason: str) -> dict:
     def make_item(c: dict) -> dict:
         return {
             "id": c["id"],
+            "key": c["key"],
             "headline_zh": c["title"],
             "why_zh": "",
             "score": None,
@@ -231,7 +232,8 @@ def main() -> int:
         brief = build_degraded_brief(candidates, str(exc))
         degraded = True
 
-    # 用 candidates 表回填 url/source/venue/authors, 防止模型幻觉/截断
+    # 用 candidates 表回填 url/source/venue/authors/key, 防止模型幻觉/截断.
+    # key 是 push.py 写 pushed.json 的依据, 不能漏.
     by_id = {c["id"]: c for c in candidates}
     for section in SECTIONS:
         kept = []
@@ -239,6 +241,7 @@ def main() -> int:
             src = by_id.get(item.get("id"))
             if src is None:
                 continue
+            item["key"] = src["key"]
             item["url"] = src["url"]
             item["source"] = src["source"]
             item["title"] = src["title"]

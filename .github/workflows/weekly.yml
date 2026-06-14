@@ -7,12 +7,8 @@ on:
     - cron: "13 22 * * 0"
   workflow_dispatch:
     inputs:
-      ignore_seen:
-        description: "忽略 seen.json (重抓全部, 包括之前已推过的; 用于补推或验证 agenda)"
-        type: boolean
-        default: false
       window_days:
-        description: "时间窗口 (天). 留空使用 sources.yaml 默认值 7"
+        description: "时间窗口 (天). 留空使用默认 7. 手动拉 '下一档' 时建议 14-30 扩大召回"
         type: string
         default: ""
 
@@ -48,7 +44,6 @@ jobs:
 
       - name: Fetch sources
         env:
-          IGNORE_SEEN: ${{ inputs.ignore_seen && '1' || '' }}
           WINDOW_DAYS: ${{ inputs.window_days }}
         run: python src/fetch.py
 

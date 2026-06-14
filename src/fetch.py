@@ -6,8 +6,17 @@
 - repec: http://nep.repec.org/{list}/{YYYY-MM-DD} (HTML 周报, BS4 解析)
 
 关键词预筛: 标题+摘要做 \\b词边界 匹配, exclude 优先级最高, long_dated 命中加 ⭐ tag.
-去重: 优先 DOI, arXiv 用 arxiv:{id}, RePEc 用 URL hash. TTL 60 天.
-HTTP 失败带指数退避重试 (5xx / 429 / 连接错误), 避免单次瞬时网络抖动整死一个源.
+
+去重语义 (方案 B):
+- state/pushed.json 记录已推送到飞书的论文 key (由 push.py 在推送成功后写入).
+- fetch.py 只读 pushed.json, 过滤掉已推过的论文, 让 Claude 在 "未推过" 池里选 top N.
+- 手动触发 (WINDOW_DAYS=30) 会扩窗口召回更多 → 自然拿到 "下一档" 没推过的论文.
+
+archive 语义:
+- 所有通过关键词的论文 (不论是否最终推) 都 append 到 data/archive.jsonl,
+  作为永久可搜索档案. data/INDEX.md 是它的人读首页.
+
+HTTP 失败带指数退避重试 (5xx / 429 / 连接错误), 避免单次瞬时抖动整死一个源.
 """
 
 import hashlib
@@ -26,11 +35,10 @@ import yaml
 from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parent.parent
-SEEN_PATH = ROOT / "state" / "seen.json"
+PUSHED_PATH = ROOT / "state" / "pushed.json"
 OUT_PATH = ROOT / "out" / "candidates.json"
 REPORT_PATH = ROOT / "out" / "fetch_report.json"
 ARCHIVE_PATH = ROOT / "data" / "archive.jsonl"     # 全量永久档案 (命中关键词的论文)
-SEEN_TTL_DAYS = 60
 
 FETCH_TIMEOUT = 30
 USER_AGENT_TMPL = "options-radar/1.0 (https://github.com/dujunyi416/options-radar; mailto:{email})"
@@ -109,17 +117,14 @@ def filter_paper(title: str, summary: str, kw: dict) -> tuple[bool, list[str]]:
 
 # ---------- 去重 ----------
 
-def load_seen() -> dict:
-    if SEEN_PATH.exists():
-        return json.loads(SEEN_PATH.read_text(encoding="utf-8"))
+def load_pushed() -> dict:
+    """已推送到飞书的论文 key. 由 push.py 在推送成功后写入. fetch.py 只读不写."""
+    if PUSHED_PATH.exists():
+        try:
+            return json.loads(PUSHED_PATH.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            return {}
     return {}
-
-
-def save_seen(seen: dict) -> None:
-    cutoff = time.time() - SEEN_TTL_DAYS * 86400
-    pruned = {k: v for k, v in seen.items() if v >= cutoff}
-    SEEN_PATH.parent.mkdir(parents=True, exist_ok=True)
-    SEEN_PATH.write_text(json.dumps(pruned, indent=0), encoding="utf-8")
 
 
 def stable_key(doi: str | None, arxiv_id: str | None, url: str, title: str) -> str:
@@ -294,8 +299,6 @@ def fetch_repec(src: dict, ua: str, since: datetime) -> list[dict]:
     soup = BeautifulSoup(html, "html.parser")
     items = []
     cap = src.get("cap", 20)
-    # NEP 报告结构: 每篇是 <h3 class="paper"> title + abstract / <ol><li> 的混合, 容错解析:
-    # 找所有带链接到 ideas.repec.org 的标题块
     seen_urls = set()
     for a in soup.find_all("a", href=_REPEC_ANCHOR_RE):
         if len(items) >= cap:
@@ -306,7 +309,6 @@ def fetch_repec(src: dict, ua: str, since: datetime) -> list[dict]:
         title = clean_text(a.get_text())
         if len(title) < 10:        # 过滤导航/编号链接
             continue
-        # B6 fix: 截到下一个 paper 链接, 不再吞下下一篇内容
         abstract = _repec_abstract(a)
         items.append({
             "title": title,
@@ -333,24 +335,26 @@ ADAPTERS = {
 
 def main() -> int:
     config = yaml.safe_load((ROOT / "config" / "sources.yaml").read_text(encoding="utf-8"))
-    # env 覆盖 (用于手动触发时调整): WINDOW_DAYS=14, IGNORE_SEEN=1
+    # env 覆盖 (用于手动触发时调整): WINDOW_DAYS=30 扩窗口召回更多
     window_days = int(os.environ.get("WINDOW_DAYS") or config.get("window_days", 7))
     max_candidates = config.get("max_candidates", 80)
     contact_email = config.get("contact_email", "anonymous@example.com")
     ua = USER_AGENT_TMPL.format(email=contact_email)
-    ignore_seen = os.environ.get("IGNORE_SEEN", "").strip().lower() in ("1", "true", "yes")
 
     now = datetime.now(timezone.utc)
     since = now - timedelta(days=window_days)
-    seen = load_seen()
+    pushed = load_pushed()
     kw = load_keywords()
-    if ignore_seen:
-        print(f"[info] IGNORE_SEEN=1, bypassing dedup against {len(seen)} seen entries "
-              f"(seen.json 仍然会被刷新, 下周 cron 不会重复推)", file=sys.stderr)
+    print(
+        f"[info] window={window_days}d, pushed.json has {len(pushed)} entries "
+        f"(will be excluded from candidates)",
+        file=sys.stderr,
+    )
 
-    candidates: list[dict] = []
+    candidates: list[dict] = []           # 未推过, 给 Claude 排
+    all_kw_pass: list[dict] = []          # 所有通过关键词的, 写 archive
     failed_sources: list[str] = []
-    counts = {"raw": 0, "after_window": 0, "after_dedup": 0, "after_keyword": 0}
+    counts = {"raw": 0, "after_window": 0, "after_keyword": 0, "after_pushed_filter": 0}
 
     for src in config["sources"]:
         adapter = ADAPTERS.get(src["type"])
@@ -370,16 +374,12 @@ def main() -> int:
         for it in raw_items:
             counts["after_window"] += 1
             key = stable_key(it.get("doi"), it.get("arxiv_id"), it["url"], it["title"])
-            if key in seen and not ignore_seen:
-                continue
-            counts["after_dedup"] += 1
             keep, tags = filter_paper(it["title"], it["summary"], kw)
             if not keep:
                 continue
             counts["after_keyword"] += 1
-            seen[key] = time.time()
-            candidates.append({
-                "id": len(candidates),
+            entry = {
+                "id": -1,  # 重排后再分配
                 "key": key,
                 "source": src["name"],
                 "topic": src["topic"],
@@ -393,9 +393,16 @@ def main() -> int:
                 "doi": it.get("doi"),
                 "arxiv_id": it.get("arxiv_id"),
                 "tags": tags,
-            })
+            }
+            # 所有通过关键词的进 archive (不论是否 pushed)
+            all_kw_pass.append(entry)
+            # 已推过的不进 candidates (避免重复打扰)
+            if key in pushed:
+                continue
+            counts["after_pushed_filter"] += 1
+            candidates.append(entry)
             kept += 1
-        print(f"[ok] {src['name']}: {len(raw_items)} raw -> +{kept} kept")
+        print(f"[ok] {src['name']}: {len(raw_items)} raw -> +{kept} new (not yet pushed)")
 
     candidates.sort(key=lambda c: c["published_ts"] or "", reverse=True)
     candidates = candidates[:max_candidates]
@@ -410,13 +417,12 @@ def main() -> int:
             "n_candidates": len(candidates),
             "total_sources": len(config["sources"]),
             "counts": counts,
+            "pushed_count": len(pushed),
         }),
         encoding="utf-8",
     )
-    save_seen(seen)
 
-    # 永久档案: 所有命中关键词的论文 append 到 data/archive.jsonl (dedup by key,
-    # 保留首次见到的 first_seen_ts). 用户可在 GitHub 上点开搜索/浏览历史.
+    # 永久档案: 所有命中关键词的论文 append 到 data/archive.jsonl
     existing_archive: dict[str, dict] = {}
     if ARCHIVE_PATH.exists():
         for line in ARCHIVE_PATH.read_text(encoding="utf-8").splitlines():
@@ -427,7 +433,7 @@ def main() -> int:
                 except (json.JSONDecodeError, KeyError):
                     continue
     n_new = 0
-    for c in candidates:
+    for c in all_kw_pass:
         row = {
             "key": c["key"],
             "title": c["title"],
@@ -443,13 +449,12 @@ def main() -> int:
             "summary": (c.get("summary") or "")[:2000],
         }
         if c["key"] in existing_archive:
-            # 保留首次见到的时间, 其余字段允许更新 (tags 可能因 keyword 扩充而变)
+            # 保留首次见到时间, 其余字段允许刷新 (tags 可能因 keyword 扩充而变)
             row["first_seen_ts"] = existing_archive[c["key"]]["first_seen_ts"]
         else:
             n_new += 1
         existing_archive[c["key"]] = row
     ARCHIVE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    # 按 first_seen_ts 倒序写, 最近的在最上方
     sorted_archive = sorted(
         existing_archive.values(),
         key=lambda r: r.get("first_seen_ts") or "",
@@ -460,8 +465,8 @@ def main() -> int:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
     print(
-        f"[done] {len(candidates)} candidates "
-        f"(raw {counts['raw']} -> dedup {counts['after_dedup']} -> kw {counts['after_keyword']}) "
+        f"[done] {len(candidates)} candidates for Claude "
+        f"(raw {counts['raw']} -> kw {counts['after_keyword']} -> not-pushed {counts['after_pushed_filter']}) "
         f"-> {OUT_PATH.relative_to(ROOT)}; archive: +{n_new} new -> {len(existing_archive)} total"
     )
     return 0

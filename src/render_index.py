@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 ARCHIVE_PATH = ROOT / "data" / "archive.jsonl"
 INDEX_PATH = ROOT / "data" / "INDEX.md"
+PUSHED_PATH = ROOT / "state" / "pushed.json"
 
 
 def parse_iso(s: str | None) -> datetime | None:
@@ -46,6 +47,14 @@ def main() -> int:
     if not rows:
         return 0
 
+    # 读 pushed.json 用于标记 ✓ 已推送
+    pushed_keys: set[str] = set()
+    if PUSHED_PATH.exists():
+        try:
+            pushed_keys = set(json.loads(PUSHED_PATH.read_text(encoding="utf-8")).keys())
+        except (json.JSONDecodeError, OSError):
+            pass
+
     # 按 published_ts (论文发表周) 分组, 没有就 fallback 到 first_seen_ts
     by_week: dict[str, list[dict]] = defaultdict(list)
     undated: list[dict] = []
@@ -59,11 +68,13 @@ def main() -> int:
     weeks_sorted = sorted(by_week.keys(), reverse=True)
     now = datetime.now(timezone(timedelta(hours=10)))
 
+    n_pushed = sum(1 for r in rows if r.get("key") in pushed_keys)
     out: list[str] = [
-        f"# Options Radar Archive · {len(rows)} 篇\n",
+        f"# Options Radar Archive · {len(rows)} 篇 ({n_pushed} 已推送)\n",
         f"> 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.",
         f"> 最近更新: {now.strftime('%Y-%m-%d %H:%M AEST')}",
-        f"> 按 Ctrl/Cmd + F 在本页搜索. JSON 原始档案: [archive.jsonl](archive.jsonl)\n",
+        f"> `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.",
+        f"> JSON 原始档案: [archive.jsonl](archive.jsonl)\n",
     ]
 
     for week in weeks_sorted:
@@ -77,7 +88,8 @@ def main() -> int:
             tags = " ".join(f"`{t}`" for t in r.get("tags", []))
             authors = md_cell(r.get("authors", ""))
             authors_short = authors[:80] + ("…" if len(authors) > 80 else "")
-            line = f"- **{pub}** · `{source}` · [{title}]({url}) {tags}"
+            marker = " ✓" if r.get("key") in pushed_keys else ""
+            line = f"- **{pub}**{marker} · `{source}` · [{title}]({url}) {tags}"
             if authors_short:
                 line += f"\n  - _{authors_short}_"
             out.append(line)
