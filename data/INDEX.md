@@ -1,13 +1,15 @@
-# Options Radar Archive · 40 篇 (29 已推送)
+# Options Radar Archive · 41 篇 (30 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-06-15 01:41 AEST
+> 最近更新: 2026-06-15 09:39 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
 
-## 2026-W24 · 8 篇
+## 2026-W24 · 9 篇
 
+- **2026-06-13** ✓ · `Review of Financial Studies` · [The Variance Premium and Seasonal Momentum in Option Returns](https://doi.org/10.1093/rfs/hhag057) `options` `methodology`
+  - _Steven L Heston, Christopher S Jones, Mehdi Khorram, Shuaiqi Li, Haitao Mo_
 - **2026-06-11** ✓ · `arXiv q-fin.PR` · [Non-Spanning Identification of Scheduled Event Risk in Option Pricing](https://arxiv.org/abs/2606.12872v1) `options` `methodology`
   - _Tenghan Zhong_
 - **2026-06-11** ✓ · `Quantitative Finance` · [Heath–Jarrow–Morton meet lifted Heston in energy markets for joint historical and implied calibration](https://doi.org/10.1080/14697688.2026.2667872) `methodology`
