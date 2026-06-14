@@ -52,6 +52,11 @@ jobs:
           FEISHU_KEYWORD: ${{ secrets.FEISHU_KEYWORD }}
         run: python src/push.py
 
+      - name: Archive markdown brief
+        # 生成 data/{YYYY-Www}.md, 人读归档, GitHub 自动渲染. 失败不影响发布.
+        if: always()
+        run: python src/render_archive.py || true
+
       - name: Compute week tag
         id: week
         run: echo "iso_week=$(date -u +%Y-W%V)" >> "$GITHUB_OUTPUT"

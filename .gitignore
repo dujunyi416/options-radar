@@ -7,3 +7,6 @@ __pycache__/
 
 # 个人 agenda, 永远不入仓库
 agenda.md
+
+# 个人手动补漏列表 (一行一个 arXiv ID / DOI / URL), 不入仓库
+manual_import.txt

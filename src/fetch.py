@@ -7,6 +7,7 @@
 
 关键词预筛: 标题+摘要做 \\b词边界 匹配, exclude 优先级最高, long_dated 命中加 ⭐ tag.
 去重: 优先 DOI, arXiv 用 arxiv:{id}, RePEc 用 URL hash. TTL 60 天.
+HTTP 失败带指数退避重试 (5xx / 429 / 连接错误), 避免单次瞬时网络抖动整死一个源.
 """
 
 import hashlib
@@ -31,6 +32,34 @@ SEEN_TTL_DAYS = 60
 
 FETCH_TIMEOUT = 30
 USER_AGENT_TMPL = "options-radar/1.0 (https://github.com/dujunyi416/options-radar; mailto:{email})"
+
+
+# ---------- HTTP 重试 wrapper ----------
+
+def http_get(url: str, ua: str, *, retries: int = 3, backoff: float = 2.0) -> requests.Response:
+    """轻量退避重试: 5xx/429/网络异常时重试; 其它 4xx 立即抛 (重试无意义)."""
+    last_exc: Exception | None = None
+    for attempt in range(retries):
+        try:
+            resp = requests.get(url, timeout=FETCH_TIMEOUT, headers={"User-Agent": ua})
+            if resp.status_code == 429 or resp.status_code >= 500:
+                raise requests.HTTPError(
+                    f"{resp.status_code} {resp.reason}", response=resp
+                )
+            resp.raise_for_status()
+            return resp
+        except requests.RequestException as exc:
+            last_exc = exc
+            if attempt < retries - 1:
+                wait = backoff ** attempt
+                print(
+                    f"[retry] {url[:80]} attempt {attempt + 1}/{retries} "
+                    f"in {wait:.0f}s: {exc}",
+                    file=sys.stderr,
+                )
+                time.sleep(wait)
+    assert last_exc is not None
+    raise last_exc
 
 
 # ---------- 关键词预筛 ----------
@@ -117,8 +146,7 @@ def fetch_arxiv(src: dict, ua: str, since: datetime) -> list[dict]:
         f"search_query=cat:{quote(category)}"
         f"&sortBy=submittedDate&sortOrder=descending&max_results={src.get('cap', 50)}"
     )
-    resp = requests.get(url, timeout=FETCH_TIMEOUT, headers={"User-Agent": ua})
-    resp.raise_for_status()
+    resp = http_get(url, ua)
     feed = feedparser.parse(resp.content)
     items = []
     for entry in feed.entries:
@@ -156,8 +184,7 @@ def fetch_crossref(src: dict, ua: str, since: datetime) -> list[dict]:
         f"&rows={src.get('cap', 10)}"
         f"&sort=published&order=desc"
     )
-    resp = requests.get(url, timeout=FETCH_TIMEOUT, headers={"User-Agent": ua})
-    resp.raise_for_status()
+    resp = http_get(url, ua)
     data = resp.json()
     items = []
     for w in data.get("message", {}).get("items", []):
@@ -208,6 +235,33 @@ def fetch_crossref(src: dict, ua: str, since: datetime) -> list[dict]:
     return items
 
 
+_REPEC_ANCHOR_RE = re.compile(r"ideas\.repec\.org|econpapers\.repec\.org")
+
+
+def _repec_abstract(anchor) -> str:
+    """从 NEP 报告抽取一篇论文的摘要 — 截到下一个 paper 链接为止, 避免吞下一篇."""
+    parts: list[str] = []
+    total = 0
+    for sib in anchor.find_all_next(limit=120):
+        # 遇到下一个论文链接就停, 不把下一篇的内容当本篇 abstract
+        if getattr(sib, "name", None) == "a" and _REPEC_ANCHOR_RE.search(sib.get("href", "")):
+            break
+        # 优先取块级元素的纯文本; 跳过没意义的导航/小标签
+        if getattr(sib, "name", None) in ("p", "blockquote", "div", "dd", "dt", "li", "span"):
+            t = clean_text(sib.get_text(" ", strip=True))
+        elif sib.name is None:  # NavigableString
+            t = clean_text(str(sib))
+        else:
+            continue
+        if not t or len(t) < 3:
+            continue
+        parts.append(t)
+        total += len(t)
+        if total > 1000:
+            break
+    return clean_text(" ".join(parts))
+
+
 def fetch_repec(src: dict, ua: str, since: datetime) -> list[dict]:
     """RePEc NEP 周报 URL 不固定, 试探最近 14 天里能命中的日期 (周一发布)."""
     nep_list = src["nep_list"]
@@ -220,12 +274,13 @@ def fetch_repec(src: dict, ua: str, since: datetime) -> list[dict]:
         d = today - timedelta(days=back)
         url = f"{base}{d.isoformat()}"
         try:
-            r = requests.get(url, timeout=FETCH_TIMEOUT, headers={"User-Agent": ua})
+            r = http_get(url, ua, retries=2, backoff=1.5)
             if r.ok and "<html" in r.text.lower():
                 html = r.text
                 issue_date = d
                 break
         except requests.RequestException:
+            # 单个日期 404/失败不算源失败, 继续往回找
             continue
     if not html or issue_date is None:
         return []
@@ -240,7 +295,7 @@ def fetch_repec(src: dict, ua: str, since: datetime) -> list[dict]:
     # NEP 报告结构: 每篇是 <h3 class="paper"> title + abstract / <ol><li> 的混合, 容错解析:
     # 找所有带链接到 ideas.repec.org 的标题块
     seen_urls = set()
-    for a in soup.find_all("a", href=re.compile(r"ideas\.repec\.org|econpapers\.repec\.org")):
+    for a in soup.find_all("a", href=_REPEC_ANCHOR_RE):
         if len(items) >= cap:
             break
         href = a.get("href", "")
@@ -249,18 +304,11 @@ def fetch_repec(src: dict, ua: str, since: datetime) -> list[dict]:
         title = clean_text(a.get_text())
         if len(title) < 10:        # 过滤导航/编号链接
             continue
-        # 摘要: 试着取后续兄弟节点的文本 (NEP 通常 abstract 紧跟 title)
-        abstract = ""
-        for sib in a.find_all_next(string=True, limit=30):
-            t = clean_text(str(sib))
-            if not t or t == title:
-                continue
-            abstract += " " + t
-            if len(abstract) > 800:
-                break
+        # B6 fix: 截到下一个 paper 链接, 不再吞下下一篇内容
+        abstract = _repec_abstract(a)
         items.append({
             "title": title,
-            "summary": clean_text(abstract)[:1500],
+            "summary": abstract[:1500],
             "url": href,
             "authors": "",
             "venue": f"RePEc {nep_list} ({issue_date.isoformat()})",

@@ -106,3 +106,9 @@ sources:
     nep_list: nep-rmg
     cap: 15
     topic: working_paper
+
+  - name: NEP Central Banking
+    type: repec
+    nep_list: nep-cba
+    cap: 10
+    topic: working_paper        # 货币政策驱动的事件溢价 + 长期利率衍生品

@@ -83,6 +83,51 @@ methodology:         # 定价方法 / 数值技术 — 不一定显式提到 opt
   - data-driven option
   - data-driven pricing
   - generative model option
+  # ---- 波动率建模 / 曲面 / 风险溢价 ----
+  - SVI volatility
+  - SSVI
+  - volatility risk premium
+  - variance risk premium
+  - VRP
+  - realized volatility option
+  - realized variance
+  - HAR-RV
+  - forecasting volatility
+  - volatility forecast
+  - GARCH option
+  - volatility spillover
+  - VIX term structure
+  - VIX futures
+  - VIX options
+  - volatility cone
+  - implied volatility surface
+  - arbitrage-free interpolation
+  # ---- 事件驱动期权定价 ----
+  - FOMC option
+  - macroeconomic announcement
+  - earnings announcement option
+  - scheduled event option
+  - announcement effect option
+  - macro announcement
+  - policy uncertainty option
+  - event risk option
+  # ---- 微观结构 / 流动性 ----
+  - option liquidity
+  - option bid-ask
+  - option order flow
+  - option market maker
+  - option dealer
+  - 0DTE
+  - zero-day option
+  - zero-day-to-expiry
+  - option market microstructure
+  - gamma squeeze
+  # ---- 气候 / ESG 衍生品 ----
+  - carbon option
+  - weather derivative
+  - climate option
+  - transition risk option
+  - ESG derivative
   # ---- 奇异期权 / 美式特征 ----
   - exotic option
   - exotic options

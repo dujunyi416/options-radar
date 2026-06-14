@@ -47,26 +47,44 @@ def health_footer() -> str:
 
 
 def detect_outage_brief() -> dict | None:
-    """0 候选 + ≥50% 源失败 → 视为全网瘫痪, 强行推一条告警 brief."""
+    """0 候选场景下的告警分级:
+      - ≥50% 源挂 → degraded outage brief (强告警 + alert step 兜底)
+      - 有源挂但 < 50% → 简短提醒 brief (避免被失败源吞掉时静默)
+      - 0 源挂        → 真·本周无相关论文, 仍然静默
+    候选 > 0 的常规情况不在此触发 (footer 已会列失败源)。"""
     report = _read_report()
     n_candidates = report.get("n_candidates", -1)
     failed = report.get("failed_sources", [])
     total = report.get("total_sources", 0)
-    if n_candidates != 0 or total == 0 or len(failed) < total * 0.5:
+    if n_candidates != 0 or total == 0:
         return None
     sample = ", ".join(failed[:5]) + ("…" if len(failed) > 5 else "")
-    return {
-        "degraded": True,
-        "overview_zh": (
-            f"⚠️ 本周抓取全面失败: 0 候选, 失败源 {len(failed)}/{total} 个 "
-            f"({sample})。可能是 runner 网络异常或多源同时腐烂, 去 Actions 看 fetch 日志。"
-        ),
-        "must_read": [],
-        "long_dated": [],
-        "methodology": [],
-        "empirical": [],
-        "other_relevant": [],
-    }
+    if len(failed) >= total * 0.5:
+        return {
+            "degraded": True,
+            "overview_zh": (
+                f"⚠️ 本周抓取全面失败: 0 候选, 失败源 {len(failed)}/{total} 个 "
+                f"({sample})。可能是 runner 网络异常或多源同时腐烂, 去 Actions 看 fetch 日志。"
+            ),
+            "must_read": [],
+            "long_dated": [],
+            "methodology": [],
+            "empirical": [],
+            "other_relevant": [],
+        }
+    if failed:
+        return {
+            "overview_zh": (
+                f"本周 0 篇候选论文 (raw 抓到但被关键词或时间窗滤光了)。"
+                f"另有 {len(failed)}/{total} 个源异常: {sample}, 可能漏召, 建议点 Actions 看 fetch 日志。"
+            ),
+            "must_read": [],
+            "long_dated": [],
+            "methodology": [],
+            "empirical": [],
+            "other_relevant": [],
+        }
+    return None
 
 
 def format_authors(authors: str) -> str:
