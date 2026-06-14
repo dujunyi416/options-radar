@@ -40,6 +40,7 @@ long_dated:          # 长期期权专项 — 命中会加 ⭐ tag
   - pension option
 
 methodology:         # 定价方法 / 数值技术 — 不一定显式提到 option, 但是常用工具
+  # ---- 传统随机模型 ----
   - stochastic volatility
   - rough volatility
   - jump-diffusion
@@ -49,9 +50,40 @@ methodology:         # 定价方法 / 数值技术 — 不一定显式提到 opt
   - Heston
   - SABR
   - local volatility
+  - Carr-Madan
+  - Fourier pricing
+  # ---- ML / 数据驱动期权定价 ----
   - neural network pricing
+  - neural network option
+  - neural network hedging
+  - neural network volatility
+  - neural option pricing
   - deep hedging
   - deep learning option
+  - deep learning pricing
+  - deep learning volatility
+  - deep learning hedging
+  - machine learning option
+  - machine learning pricing
+  - machine learning derivative
+  - machine learning hedging
+  - machine learning volatility
+  - reinforcement learning option
+  - reinforcement learning hedging
+  - reinforcement learning execution
+  - neural SDE
+  - neural ODE
+  - deep BSDE
+  - physics-informed neural
+  - PINN option
+  - signature method
+  - signature kernel
+  - Gaussian process option
+  - Gaussian process volatility
+  - data-driven option
+  - data-driven pricing
+  - generative model option
+  # ---- 奇异期权 / 美式特征 ----
   - exotic option
   - exotic options
   - American option
