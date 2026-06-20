@@ -1,13 +1,38 @@
-# Options Radar Archive · 41 篇 (30 已推送)
+# Options Radar Archive · 52 篇 (39 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-06-15 09:39 AEST
+> 最近更新: 2026-06-20 16:12 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
 
-## 2026-W24 · 9 篇
+## 2026-W25 · 9 篇
 
+- **2026-06-18** · `arXiv q-fin.RM` · [How to spot outliers: an Ensemble Anomaly Detection Framework](https://arxiv.org/abs/2606.20079v1) `options`
+  - _Daniil Peysakhovich, Rafał Sieradzki_
+- **2026-06-17** ✓ · `arXiv q-fin.MF` · [Fitting Accumulated Stock Returns with Tempered Skew t-Distribution](https://arxiv.org/abs/2606.19318v1) `methodology`
+  - _Siqi Shao, R. A. Serota_
+- **2026-06-17** ✓ · `arXiv q-fin.MF` · [Optimal Consumption and Retirement Time under Shortfall Risk Measure](https://arxiv.org/abs/2606.18935v1) `options`
+  - _Lijun Bo, Yijie Huang, Tingting Zhang_
+- **2026-06-16** ✓ · `arXiv q-fin.CP` · [Continuous-time Optimal Stopping through Deep Reinforcement Learning](https://arxiv.org/abs/2606.17545v1) `methodology`
+  - _Cosmin Borsa, Michael Ludkovski_
+- **2026-06-16** ✓ · `Quantitative Finance` · [Valuation of American options in ambiguous multifactor models](https://doi.org/10.1080/14697688.2026.2657390) `options` `methodology`
+  - _Ankush Agarwal, Christian Ewald, Yihan Zou_
+- **2026-06-16** ✓ · `Quantitative Finance` · [No arbitrage assumption implies the differentiability of the derivative pricing function](https://doi.org/10.1080/14697688.2026.2672622) `options`
+  - _Kihun Nam, Yunxi Xu_
+- **2026-06-15** ✓ · `arXiv q-fin.MF` · [Sharpe Ratio and Return-VaR Ratio Maximization for Option Portfolios with Skew-Elliptical $t$ Underlying Returns](https://arxiv.org/abs/2606.17032v1) `options`
+  - _Kyle Sung, Traian A. Pirvu_
+- **2026-06-15** ✓ · `arXiv q-fin.CP` · [Beyond the Smile: A Hybrid Convolutional VAE for Crypto Volatility Surfaces](https://arxiv.org/abs/2606.16961v1) `options`
+  - _Sadanand Singh, Allam Reddy, Manan Chopra_
+- **2026-06-15** ✓ · `arXiv q-fin.MF` · [Expanding the rough Heston model in $H$](https://arxiv.org/abs/2606.16619v1) `options` `methodology`
+  - _Paul P. Hager, Dörte Kreher_
+
+## 2026-W24 · 11 篇
+
+- **2026-06-13** ✓ · `arXiv q-fin.CP` · [Fast, Reliable, and Error-Bounded Option Pricing with Pretrained Neural Networks: A GJR--GARCH Study](https://arxiv.org/abs/2606.15502v1) `options`
+  - _Thijs van den Berg_
+- **2026-06-13** · `arXiv q-fin.RM` · [PHINN: Persistent Homology Inspired Neural Network for Rare-Event Time Series Generation](https://arxiv.org/abs/2606.15452v1) `methodology`
+  - _Emre Yusuf, Ren Takahashi, Jayabrata Bhaduri_
 - **2026-06-13** ✓ · `Review of Financial Studies` · [The Variance Premium and Seasonal Momentum in Option Returns](https://doi.org/10.1093/rfs/hhag057) `options` `methodology`
   - _Steven L Heston, Christopher S Jones, Mehdi Khorram, Shuaiqi Li, Haitao Mo_
 - **2026-06-11** ✓ · `arXiv q-fin.PR` · [Non-Spanning Identification of Scheduled Event Risk in Option Pricing](https://arxiv.org/abs/2606.12872v1) `options` `methodology`
