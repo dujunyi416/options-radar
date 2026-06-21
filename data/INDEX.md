@@ -1,14 +1,14 @@
-# Options Radar Archive · 52 篇 (39 已推送)
+# Options Radar Archive · 52 篇 (40 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-06-20 16:12 AEST
+> 最近更新: 2026-06-22 09:45 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
 
 ## 2026-W25 · 9 篇
 
-- **2026-06-18** · `arXiv q-fin.RM` · [How to spot outliers: an Ensemble Anomaly Detection Framework](https://arxiv.org/abs/2606.20079v1) `options`
+- **2026-06-18** ✓ · `arXiv q-fin.RM` · [How to spot outliers: an Ensemble Anomaly Detection Framework](https://arxiv.org/abs/2606.20079v1) `options`
   - _Daniil Peysakhovich, Rafał Sieradzki_
 - **2026-06-17** ✓ · `arXiv q-fin.MF` · [Fitting Accumulated Stock Returns with Tempered Skew t-Distribution](https://arxiv.org/abs/2606.19318v1) `methodology`
   - _Siqi Shao, R. A. Serota_
