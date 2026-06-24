@@ -1,6 +1,6 @@
 # 📚 Options Radar
 
-**一个开源的、agenda 感知的期权定价论文周报筛选引擎。** 每周一早上从 arXiv (q-fin.PR / MF / CP / RM)、Crossref 顶级金融期刊 (JF / JFE / RFS / Math Finance / Finance and Stochastics / Quantitative Finance / Journal of Derivatives / Review of Derivatives Research 等)、RePEc NEP 周报 (fmk / rmg) 抓取过去 7 天的新论文 → 用关键词 (options/long-dated/methodology) 预筛 → 一次 Claude 调用按"这会不会推进*你的*研究方向"排序 → 推送一份分 section 的周报到飞书和 Gmail：
+**一个开源的、agenda 感知的期权定价论文周报筛选引擎。** 每周一早上从 arXiv (q-fin.PR / MF / CP / RM)、Crossref 顶级金融期刊 (JF / JFE / RFS / Math Finance / Finance and Stochastics / Quantitative Finance / Journal of Derivatives / Review of Derivatives Research 等)、RePEc NEP 周报 (fmk / rmg) 抓取过去 7 天的新论文 → 用关键词 (options/long-dated/methodology) 预筛 → 一次 LLM 调用按"这会不会推进*你的*研究方向"排序 → 推送一份分 section 的周报到飞书和 Gmail：
 
 - **🎯 必读** — 与 agenda 高度相关、放下别的也要读的 2-4 篇
 - **⭐ 长期期权** — 命中 LEAPS / long-dated / 嵌入期权 / 养老金等专项关键词的论文 (核心方向)
@@ -21,7 +21,7 @@
 ```
 GitHub Actions (每周日 22:13 UTC = 布里斯班周一 08:13)
   └─ src/fetch.py        arXiv API + Crossref + RePEc → 关键词预筛 → out/candidates.json
-  └─ src/brief.py        单次 claude -p 调用 (注入 AGENDA secret) → out/brief.json
+  └─ src/brief.py        GitHub Models 优先, Claude CLI fallback (注入 AGENDA secret) → out/brief.json
   │                      同时把通用元数据写入 data/YYYY-Www.jsonl (公开数据集)
   └─ src/push.py         推送飞书
   └─ src/render_email.py brief.json → HTML email
@@ -38,7 +38,7 @@ GitHub Actions (每周日 22:13 UTC = 布里斯班周一 08:13)
 
    | Secret | 必需 | 怎么拿 |
    |---|---|---|
-   | `CLAUDE_CODE_OAUTH_TOKEN` | ✅ | 本机装 Claude Code 后 `claude setup-token` (Pro/Max 订阅额度) |
+   | `CLAUDE_CODE_OAUTH_TOKEN` | 可选 (fallback) | 本机装 Claude Code 后 `claude setup-token` (Pro/Max 订阅额度). CI 默认走 GitHub Models (`GITHUB_TOKEN` 自动注入, workflow 已声明 `models: read`) |
    | `AGENDA` | ✅ | 照 [agenda.example.md](agenda.example.md) 写自己的研究方向, 整个文件内容贴进去 |
    | `FEISHU_WEBHOOK_URL` | ✅ | 飞书群 → 设置 → 群机器人 → 添加自定义机器人 |
    | `FEISHU_KEYWORD` | 可选 | 若机器人开了"自定义关键词"安全策略, 填关键词 (建议 `options` 或 `radar`) |
@@ -68,8 +68,9 @@ pip install -r requirements.txt
 python src/fetch.py
 # → 检查 out/candidates.json 篇数 (预期 20-60 篇)
 
-# Stage 2: 让 Claude 排序 (需要本机已登录 claude CLI)
+# Stage 2: LLM 排序 (CI 同逻辑: GitHub Models 优先, 本机无 token 时走 claude CLI)
 $env:AGENDA = Get-Content agenda.md -Raw
+# 可选: $env:GITHUB_TOKEN = gh auth token   # 本地也想走 GitHub Models 时
 python src/brief.py
 # → 检查 out/brief.json sections 是否合理, ⭐long-dated tag 是否命中长期期权论文
 

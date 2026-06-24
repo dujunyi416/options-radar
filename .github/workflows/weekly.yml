@@ -14,6 +14,7 @@ on:
 
 permissions:
   contents: write
+  models: read
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -47,8 +48,10 @@ jobs:
           WINDOW_DAYS: ${{ inputs.window_days }}
         run: python src/fetch.py
 
-      - name: Rank with Claude
+      - name: Rank papers
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_MODEL: openai/gpt-4.1
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           AGENDA: ${{ secrets.AGENDA }}
         run: python src/brief.py
