@@ -1,10 +1,19 @@
-# Options Radar Archive · 63 篇 (48 已推送)
+# Options Radar Archive · 66 篇 (51 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-06-29 09:19 AEST
+> 最近更新: 2026-07-06 09:22 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
+
+## 2026-W27 · 3 篇
+
+- **2026-07-01** ✓ · `arXiv q-fin.MF` · [Tail Risk Management with Puts and Trend Following: A CVaR Framework for Crashes and Drawdowns](https://arxiv.org/abs/2607.00883v1) `options`
+  - _Miquel Noguer I Alonso, Ali Al Fallouji_
+- **2026-06-30** ✓ · `Review of Financial Studies` · [Too Good to Be True: Look-Ahead Bias in Empirical Options Research](https://doi.org/10.1093/rfs/hhag061) `options`
+  - _Jefferson Duarte, Christopher S Jones, Mehdi Khorram, Haitao Mo, Junbo L Wang_
+- **2026-06-29** ✓ · `Review of Derivatives Research` · [Stress-consistent macroprudential overlay for derivative pricing](https://doi.org/10.1007/s11147-026-09241-y) `options`
+  - _Keorapetse Leballo, Jules Clement Mba_
 
 ## 2026-W26 · 11 篇
 
