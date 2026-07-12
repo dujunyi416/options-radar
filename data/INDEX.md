@@ -1,10 +1,34 @@
-# Options Radar Archive · 66 篇 (51 已推送)
+# Options Radar Archive · 75 篇 (59 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-07-06 09:22 AEST
+> 最近更新: 2026-07-13 09:10 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
+
+## 2026-W36 · 1 篇
+
+- **2026-09-01** ✓ · `Journal of Financial Economics` · [Carbon VIX: Carbon price uncertainty and decarbonization investments](https://doi.org/10.1016/j.jfineco.2026.104328) `options`
+  - _Maximilian Fuchs, Johannes Stroebel, Julian Terstegge_
+
+## 2026-W28 · 8 篇
+
+- **2026-07-11** ✓ · `Journal of Derivatives` · [Quality versus Quantity: Evidence from Machine Learning Option Pricing](https://doi.org/10.3905/jod.2026.009) `options` `methodology`
+  - _Raquel M. Gaspar_
+- **2026-07-09** ✓ · `arXiv q-fin.MF` · [Estimating the Stochastic Discount Factor from Option Prices and Predicting the Equity Premium](https://arxiv.org/abs/2607.08500v1) `options` `methodology`
+  - _Kenichiro Shiraya, Tomohisa Yamakami, Akira Yamazaki_
+- **2026-07-07** ✓ · `arXiv q-fin.MF` · [Entropic Dynamics of Jump-Diffusion Option Pricing](https://arxiv.org/abs/2607.06355v1) `options` `methodology`
+  - _Mohammad Abedi_
+- **2026-07-07** ✓ · `arXiv q-fin.CP` · [Signature-based identification of volatility models from path geometry](https://arxiv.org/abs/2607.06340v1) `methodology`
+  - _Òscar Burés, Rafael De Santiago_
+- **2026-07-07** ✓ · `arXiv q-fin.CP` · [Arbitrage-Free Multi-Maturity Risk-Neutral Marginals](https://arxiv.org/abs/2607.06204v1) `options` `methodology`
+  - _Hao Qin, Ruozhong Yang, Charlie Che, Liming Feng_
+- **2026-07-06** · `arXiv q-fin.MF` · [Reaction-boundary variance and adjoint-consistent local-volatility projection](https://arxiv.org/abs/2607.05011v2) `methodology`
+  - _Chris Angstmann, Tim Gebbie_
+- **2026-07-06** ✓ · `Review of Derivatives Research` · [Selective forgetting in option calibration: an operator-theoretic Gauss–Newton framework](https://doi.org/10.1007/s11147-026-09243-w) `options`
+  - _Ahmet Umur Özsoy_
+- **2026-07-06** ✓ · `Review of Derivatives Research` · [Anomalies and optionability](https://doi.org/10.1007/s11147-026-09242-x) `options`
+  - _Julian Böll, Julian Thimme, Marliese Uhrig-Homburg_
 
 ## 2026-W27 · 3 篇
 
