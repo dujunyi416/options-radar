@@ -1,7 +1,7 @@
-# Options Radar Archive · 75 篇 (59 已推送)
+# Options Radar Archive · 82 篇 (66 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-07-13 09:10 AEST
+> 最近更新: 2026-07-20 14:35 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
@@ -10,6 +10,23 @@
 
 - **2026-09-01** ✓ · `Journal of Financial Economics` · [Carbon VIX: Carbon price uncertainty and decarbonization investments](https://doi.org/10.1016/j.jfineco.2026.104328) `options`
   - _Maximilian Fuchs, Johannes Stroebel, Julian Terstegge_
+
+## 2026-W29 · 7 篇
+
+- **2026-07-17** ✓ · `arXiv q-fin.MF` · [Consistent pricing of bivariate interest rate exotics via constrained Schrödinger optimal transport](https://arxiv.org/abs/2607.15952v1) `options`
+  - _Patrick Roome_
+- **2026-07-16** ✓ · `arXiv q-fin.CP` · [Structure-Aware Variational State Preparation for Quantum Basket Option Pricing](https://arxiv.org/abs/2607.14518v1) `options`
+  - _Dongwoo Kim, Zhenyu Cui, Daniel K. Park, Chihoon Lee_
+- **2026-07-15** ✓ · `arXiv q-fin.CP` · [NeuralChaos: Optimal Adapted Approximation of Square Integrable Predictable Processes](https://arxiv.org/abs/2607.14361v1) `methodology`
+  - _Anastasis Kratsios, Giulia Livieri, Philipp Schmocker_
+- **2026-07-15** ✓ · `arXiv q-fin.CP` · [Is Deep Hedging Reinforcement Learning?](https://arxiv.org/abs/2607.13353v2) `methodology`
+  - _Frédéric Godin_
+- **2026-07-15** ✓ · `Mathematical Finance` · [On the Exact Limiting Distribution of a Volatility Target Index](https://doi.org/10.1111/mafi.70044) `options`
+  - _Xuan Liu, Michel Gauthier_
+- **2026-07-14** ✓ · `arXiv q-fin.MF` · [Ito-Wentzell Formula and Dupire Stochastic PDE](https://arxiv.org/abs/2607.12479v2) `options` `methodology`
+  - _Vladimir Lucic_
+- **2026-07-14** ✓ · `Journal of Derivatives` · [Reexamining the Relationship between Financial Market Illiquidity and Option Returns: Evidence from China](https://doi.org/10.3905/jod.2026.010) `options`
+  - _Qiang Chen, Ying Huang_
 
 ## 2026-W28 · 8 篇
 
