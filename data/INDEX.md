@@ -1,7 +1,7 @@
-# Options Radar Archive · 82 篇 (66 已推送)
+# Options Radar Archive · 88 篇 (72 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-07-20 14:35 AEST
+> 最近更新: 2026-07-27 09:12 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
@@ -10,6 +10,21 @@
 
 - **2026-09-01** ✓ · `Journal of Financial Economics` · [Carbon VIX: Carbon price uncertainty and decarbonization investments](https://doi.org/10.1016/j.jfineco.2026.104328) `options`
   - _Maximilian Fuchs, Johannes Stroebel, Julian Terstegge_
+
+## 2026-W30 · 6 篇
+
+- **2026-07-24** ✓ · `Journal of Derivatives` · [Utility Indifference Valuation for Defaultable Claims under a Structural Model with Hawkes Jump-Diffusion Processes](https://doi.org/10.3905/jod.2026.012) `methodology`
+  - _Ayu Xie, Xiaosong Qian_
+- **2026-07-24** ✓ · `Review of Derivatives Research` · [Correction: An integrated optimisation model for pricing and hedging oil derivatives](https://doi.org/10.1007/s11147-026-09239-6) `options`
+  - _Teemu Pennanen, Luciane Sbaraini Bonatto_
+- **2026-07-23** ✓ · `Journal of Finance` · [Do Equity and Options Markets Agree about Volatility?](https://doi.org/10.1111/jofi.70070) `options`
+  - _CARSTEN H. CHONG, VIKTOR TODOROV_
+- **2026-07-23** ✓ · `Quantitative Finance` · [Options markets as political forecasts: insights from the 2024 U.S. presidential race](https://doi.org/10.1080/14697688.2026.2674154) `options`
+  - _Sebastian M. Saiegh_
+- **2026-07-21** ✓ · `arXiv q-fin.CP` · [Pricing options on illiquid assets using liquid market benchmarks: an application to energy markets](https://arxiv.org/abs/2607.19030v1) `options` `methodology`
+  - _Federico Aluigi, Lucia Caramellino, Paolo Pigato, Edoardo Scrima_
+- **2026-07-21** ✓ · `Quantitative Finance` · [On the correlations in linearized multivariate stochastic volatility models](https://doi.org/10.1080/14697688.2026.2690262) `methodology`
+  - _Karim Moussa_
 
 ## 2026-W29 · 7 篇
 
