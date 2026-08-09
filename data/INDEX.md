@@ -1,7 +1,7 @@
-# Options Radar Archive · 100 篇 (82 已推送)
+# Options Radar Archive · 105 篇 (86 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-08-03 09:16 AEST
+> 最近更新: 2026-08-10 08:51 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
@@ -10,6 +10,19 @@
 
 - **2026-09-01** ✓ · `Journal of Financial Economics` · [Carbon VIX: Carbon price uncertainty and decarbonization investments](https://doi.org/10.1016/j.jfineco.2026.104328) `options`
   - _Maximilian Fuchs, Johannes Stroebel, Julian Terstegge_
+
+## 2026-W32 · 5 篇
+
+- **2026-08-06** · `arXiv q-fin.MF` · [Non-concave Corporate Management with Option Incentives under Value-at-Risk Constraint](https://arxiv.org/abs/2608.05623v1) `options`
+  - _Wenyuan Li, Haoqi Lyu, Pengyu Wei_
+- **2026-08-05** ✓ · `arXiv q-fin.CP` · [Robust Control under Stationary Ambiguity](https://arxiv.org/abs/2608.04832v1) `options`
+  - _Konrad J. Mueller, Amira Akkari, Ben Wood, Lukas Gonon_
+- **2026-08-04** ✓ · `arXiv q-fin.MF` · [The Mathematics of Volatility Surfaces](https://arxiv.org/abs/2608.05198v1) `options` `methodology`
+  - _Miquel Noguer i Alonso_
+- **2026-08-04** ✓ · `arXiv q-fin.MF` · [Option Pricing with Time-Changed Fractional Brownian Motion: A Fractional Variance Gamma Model](https://arxiv.org/abs/2608.03925v1) `options`
+  - _Robert Jarrow, Jayen Tan_
+- **2026-08-03** ✓ · `arXiv q-fin.CP` · [Neural Networks with Local Converging Inputs for Efficient Options Pricing Models](https://arxiv.org/abs/2608.02778v1) `options` `methodology`
+  - _Harris Cobb, Wenbo Hao, Yingjie Liu_
 
 ## 2026-W31 · 12 篇
 
