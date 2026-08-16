@@ -1,7 +1,7 @@
-# Options Radar Archive · 105 篇 (86 已推送)
+# Options Radar Archive · 110 篇 (91 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-08-10 08:51 AEST
+> 最近更新: 2026-08-17 08:43 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
@@ -10,6 +10,19 @@
 
 - **2026-09-01** ✓ · `Journal of Financial Economics` · [Carbon VIX: Carbon price uncertainty and decarbonization investments](https://doi.org/10.1016/j.jfineco.2026.104328) `options`
   - _Maximilian Fuchs, Johannes Stroebel, Julian Terstegge_
+
+## 2026-W33 · 5 篇
+
+- **2026-08-14** ✓ · `Review of Derivatives Research` · [Correction: How do option contract sizes affect investor composition and market quality?](https://doi.org/10.1007/s11147-026-09244-9) `options`
+  - _Jaeram Lee, Doojin Ryu, Robert Webb_
+- **2026-08-13** ✓ · `arXiv q-fin.MF` · [Fee Implied Volatility on Uniswap v3: A DEX Native Proxy and Its Limits](https://arxiv.org/abs/2608.13340v1) `options`
+  - _Amy Oumayma Khaldoun_
+- **2026-08-12** ✓ · `arXiv q-fin.MF` · [DYSANOS Generative Dynamic Smooth Arbitrage-free Non-parametric Option Surfaces](https://arxiv.org/abs/2608.12587v1) `options`
+  - _Hans Buehler, Blanka Horvath, Anastasis Kratsios_
+- **2026-08-12** ✓ · `arXiv q-fin.CP` · [Beyond the Skew-Stickiness Ratio: Transport Geometry of Spot-Driven Variance Surface Dynamics](https://arxiv.org/abs/2608.12493v1) `options` `methodology`
+  - _Charlie Che, Pradeepta Das_
+- **2026-08-11** ✓ · `arXiv q-fin.PR` · [Optimal Pricing and Hedging of SOFR Derivatives](https://arxiv.org/abs/2608.10711v1) `options`
+  - _Teemu Pennanen, Waleed Taoum_
 
 ## 2026-W32 · 5 篇
 
