@@ -1,15 +1,35 @@
-# Options Radar Archive · 110 篇 (91 已推送)
+# Options Radar Archive · 117 篇 (98 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-08-17 08:43 AEST
+> 最近更新: 2026-08-24 08:39 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
+
+## 2026-W40 · 1 篇
+
+- **2026-10-01** ✓ · `Journal of Banking and Finance` · [Opacity in security design: The role of post-issuance derivative trading](https://doi.org/10.1016/j.jbankfin.2026.107790) `options`
+  - _Fabrizio Adriani, Subir Bose, Xing Gao_
 
 ## 2026-W36 · 1 篇
 
 - **2026-09-01** ✓ · `Journal of Financial Economics` · [Carbon VIX: Carbon price uncertainty and decarbonization investments](https://doi.org/10.1016/j.jfineco.2026.104328) `options`
   - _Maximilian Fuchs, Johannes Stroebel, Julian Terstegge_
+
+## 2026-W34 · 6 篇
+
+- **2026-08-20** ✓ · `arXiv q-fin.MF` · [The Reconfiguration Premium: Co-movement Structure as an Unspanned Dimension of the Variance Risk Premium](https://arxiv.org/abs/2608.20020v1) `methodology`
+  - _Lucas Carvalho_
+- **2026-08-19** ✓ · `arXiv q-fin.CP` · [Deep-MKV-TS: Path-Dependent McKean--Vlasov Control for Financial Time Series Generation](https://arxiv.org/abs/2608.19394v1) `methodology`
+  - _Samer El Boustany, Théo Basseras, Samy Mekkaoui, Alexandre Alouadi, Yadh Hafsi, …_
+- **2026-08-18** ✓ · `arXiv q-fin.CP` · [COS-TT-CHF: A Tensor-Train Characteristic-Function COS Method for Multi-Asset Option Pricing](https://arxiv.org/abs/2608.17636v1) `options` `methodology`
+  - _Lucas Arenstein, Michael Kastoryano_
+- **2026-08-18** ✓ · `arXiv q-fin.RM` · [A generic nonparametric value-at-risk estimator for high dimensions](https://arxiv.org/abs/2608.17481v1) `options`
+  - _Siyuan Sun_
+- **2026-08-17** ✓ · `arXiv q-fin.MF` · [When ratios fall: A dynamic approach to contingent convertibles](https://arxiv.org/abs/2608.16842v1) `methodology`
+  - _Li Chen, Liang Wang, Weixuan Xia_
+- **2026-08-17** ✓ · `arXiv q-fin.MF` · [Rough Volatility Across Assets](https://arxiv.org/abs/2608.16749v1) `options` `methodology`
+  - _Saad Mouti_
 
 ## 2026-W33 · 5 篇
 
