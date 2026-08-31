@@ -1,7 +1,7 @@
-# Options Radar Archive · 117 篇 (98 已推送)
+# Options Radar Archive · 122 篇 (103 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-08-24 08:39 AEST
+> 最近更新: 2026-08-31 10:38 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
@@ -15,6 +15,19 @@
 
 - **2026-09-01** ✓ · `Journal of Financial Economics` · [Carbon VIX: Carbon price uncertainty and decarbonization investments](https://doi.org/10.1016/j.jfineco.2026.104328) `options`
   - _Maximilian Fuchs, Johannes Stroebel, Julian Terstegge_
+
+## 2026-W35 · 5 篇
+
+- **2026-08-29** ✓ · `Review of Derivatives Research` · [Collared takeover exchange options with ratio barriers: practical extensions of the Haug–Haug knock-in/out Margrabe formula](https://doi.org/10.1007/s11147-026-09246-7) `options`
+  - _Espen Gaarder Haug_
+- **2026-08-25** ✓ · `arXiv q-fin.CP` · [Harvesting the Volatility Risk Premium: A Learning-to-Rank Approach](https://arxiv.org/abs/2608.24786v1) `options` `methodology`
+  - _Maciej Wysocki_
+- **2026-08-25** ✓ · `Journal of Finance` · [Longevity, Health, and Housing Risk Management in Retirement](https://doi.org/10.1111/jofi.70077) `⭐long-dated`
+  - _PIERRE‐CARL MICHAUD, PASCAL ST‐AMOUR_
+- **2026-08-24** ✓ · `arXiv q-fin.RM` · [The Physical Crash Frontier: What Finite Option Quotes Can and Cannot Reveal](https://arxiv.org/abs/2608.23274v1) `options`
+  - _Jirong Zhuang_
+- **2026-08-24** ✓ · `arXiv q-fin.CP` · [Diagonal Frog meets ADI: trading matrix exponentials for rational maps in the Fokker--Planck equation](https://arxiv.org/abs/2608.22703v1) `options`
+  - _Andrey Itkin, Rakhymzhan Kazbek_
 
 ## 2026-W34 · 6 篇
 
