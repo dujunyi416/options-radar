@@ -1,6 +1,6 @@
 """Stage 2: 用 LLM 按用户 research agenda 排序候选论文.
 
-CI 默认 GitHub Models (GITHUB_TOKEN), Claude CLI 作 fallback.
+CI 默认 Gemini (GEMINI_API_KEY), Claude CLI 作 fallback.
 输出 out/brief.json + data/YYYY-Www.jsonl (公开元数据).
 agenda 来自 AGENDA env var, 永远不进仓库; out/ 全部 gitignore.
 """
@@ -74,8 +74,13 @@ PROMPT_TEMPLATE = """你是一个为金融博士研究者服务的期权定价�
 - 【硬约束】JSON 字符串值内禁止使用 ASCII 双引号 `"`. 引用用中文引号 `"…"`、《…》或省略. 违反会直接导致今日推送失败.
 """
 
-GITHUB_MODELS_URL = "https://models.github.ai/inference/chat/completions"
-DEFAULT_GITHUB_MODEL = "openai/gpt-4.1"
+GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+DEFAULT_GEMINI_MODEL = "gemini-2.5-flash"
+
+
+def _env(name: str) -> str:
+    """读 env 并清洗 BOM (PowerShell `gh secret set` 管道会偷偷加 U+FEFF)."""
+    return os.environ.get(name, "").strip().lstrip("\ufeff").strip()
 
 
 def _write_raw(text: str) -> None:
@@ -86,38 +91,51 @@ def _write_raw(text: str) -> None:
         pass
 
 
-def call_github_models(prompt: str) -> str:
-    token = os.environ.get("GITHUB_TOKEN", "").strip()
-    if not token:
-        raise RuntimeError("GITHUB_TOKEN not set")
-    model = os.environ.get("GITHUB_MODEL", DEFAULT_GITHUB_MODEL)
-    url = os.environ.get("GITHUB_MODELS_URL", GITHUB_MODELS_URL)
+def _gemini_api_key() -> str:
+    return _env("GEMINI_API_KEY") or _env("GOOGLE_API_KEY")
+
+
+def _gemini_text(data: dict) -> str:
+    candidates = data.get("candidates") or []
+    if not candidates:
+        feedback = data.get("promptFeedback") or data
+        raise RuntimeError(f"gemini empty candidates: {str(feedback)[:2000]}")
+    parts = (candidates[0].get("content") or {}).get("parts") or []
+    text = "".join(p.get("text", "") for p in parts if isinstance(p, dict))
+    if not text.strip():
+        reason = candidates[0].get("finishReason", "")
+        raise RuntimeError(f"gemini empty content (finishReason={reason}): {str(data)[:2000]}")
+    return text
+
+
+def call_gemini(prompt: str) -> str:
+    key = _gemini_api_key()
+    if not key:
+        raise RuntimeError("GEMINI_API_KEY not set")
+    model = _env("GEMINI_MODEL") or DEFAULT_GEMINI_MODEL
+    url = _env("GEMINI_API_URL") or GEMINI_API_URL.format(model=model)
     headers = {
-        "Authorization": f"Bearer {token}",
+        "x-goog-api-key": key,
         "Content-Type": "application/json",
-        "Accept": "application/vnd.github+json",
     }
     payload = {
-        "model": model,
-        "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0.2,
+        "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "temperature": 0.2,
+            "responseMimeType": "application/json",
+        },
     }
     try:
         resp = requests.post(url, headers=headers, json=payload, timeout=600)
     except requests.RequestException as exc:
-        raise RuntimeError(f"github models request failed: {exc}") from exc
+        raise RuntimeError(f"gemini request failed: {exc}") from exc
     if resp.status_code != 200:
-        raise RuntimeError(f"github models HTTP {resp.status_code}: {resp.text[:2000]}")
+        raise RuntimeError(f"gemini HTTP {resp.status_code}: {resp.text[:2000]}")
     try:
         data = resp.json()
     except json.JSONDecodeError as exc:
-        raise RuntimeError(f"github models invalid JSON: {resp.text[:500]}") from exc
-    choices = data.get("choices") or []
-    if not choices:
-        raise RuntimeError(f"github models empty choices: {str(data)[:2000]}")
-    content = (choices[0].get("message") or {}).get("content")
-    if not content:
-        raise RuntimeError("github models returned empty content")
+        raise RuntimeError(f"gemini invalid JSON: {resp.text[:500]}") from exc
+    content = _gemini_text(data)
     _write_raw(content)
     return content
 
@@ -144,22 +162,22 @@ class RankFailure(RuntimeError):
 
 
 def _available_backends() -> list[str]:
-    override = os.environ.get("LLM_BACKEND", "auto").strip().lower()
+    override = _env("LLM_BACKEND").lower() or "auto"
     if override == "claude":
         return ["claude"]
-    if override in ("github-models", "github_models", "github"):
-        return ["github-models"]
+    if override in ("gemini", "google"):
+        return ["gemini"]
     backends: list[str] = []
-    if os.environ.get("GITHUB_TOKEN", "").strip():
-        backends.append("github-models")
+    if _gemini_api_key():
+        backends.append("gemini")
     if shutil.which("claude") or shutil.which("claude.cmd"):
         backends.append("claude")
     return backends
 
 
 def _call_llm(prompt: str, backend: str) -> str:
-    if backend == "github-models":
-        return call_github_models(prompt)
+    if backend == "gemini":
+        return call_gemini(prompt)
     if backend == "claude":
         return call_claude(prompt)
     raise ValueError(f"unknown backend: {backend}")
@@ -169,7 +187,7 @@ def rank(prompt: str, attempts: int = 2) -> dict:
     backends = _available_backends()
     if not backends:
         raise RankFailure(
-            "no LLM backend available (need GITHUB_TOKEN or claude CLI on PATH)"
+            "no LLM backend available (need GEMINI_API_KEY or claude CLI on PATH)"
         )
     last_exc: Exception = RuntimeError("unreachable")
     for backend in backends:
@@ -236,9 +254,9 @@ def extract_json(text: str) -> dict:
 
 def _classify_failure(reason: str) -> str:
     r = (reason or "").lower()
-    if "github models" in r or "github_token not set" in r:
-        return ("GitHub Models 调用失败。确认 workflow 声明了 models: read 权限；"
-                "或检查免费额度是否用尽。")
+    if "gemini" in r or "gemini_api_key not set" in r:
+        return ("Gemini 调用失败。确认 Actions secret `GEMINI_API_KEY` 已设置，"
+                "且该 key 没有绑 HTTP referrer / IP 限制（CI runner IP 会变）。")
     if "claude exited" in r or "claude cli not found" in r:
         return ("Claude fallback 也失败, 可能 CLAUDE_CODE_OAUTH_TOKEN 失效。"
                 "本地跑 `claude setup-token`, 再 `gh secret set CLAUDE_CODE_OAUTH_TOKEN -b <新token>`。")

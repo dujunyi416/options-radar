@@ -21,7 +21,7 @@
 ```
 GitHub Actions (每周日 22:13 UTC = 布里斯班周一 08:13)
   └─ src/fetch.py        arXiv API + Crossref + RePEc → 关键词预筛 → out/candidates.json
-  └─ src/brief.py        GitHub Models 优先, Claude CLI fallback (注入 AGENDA secret) → out/brief.json
+  └─ src/brief.py        Gemini 优先, Claude CLI fallback (注入 AGENDA secret) → out/brief.json
   │                      同时把通用元数据写入 data/YYYY-Www.jsonl (公开数据集)
   └─ src/push.py         推送飞书
   └─ src/render_email.py brief.json → HTML email
@@ -38,7 +38,8 @@ GitHub Actions (每周日 22:13 UTC = 布里斯班周一 08:13)
 
    | Secret | 必需 | 怎么拿 |
    |---|---|---|
-   | `CLAUDE_CODE_OAUTH_TOKEN` | 可选 (fallback) | 本机装 Claude Code 后 `claude setup-token` (Pro/Max 订阅额度). CI 默认走 GitHub Models (`GITHUB_TOKEN` 自动注入, workflow 已声明 `models: read`) |
+   | `GEMINI_API_KEY` | ✅ | [Google AI Studio](https://aistudio.google.com/apikey) 复制现有 key, 或在同一项目再造一把只开 Gemini API、不限制 HTTP referrer/IP 的 key |
+   | `CLAUDE_CODE_OAUTH_TOKEN` | 可选 (fallback) | 本机装 Claude Code 后 `claude setup-token` (Pro/Max 订阅额度) |
    | `AGENDA` | ✅ | 照 [agenda.example.md](agenda.example.md) 写自己的研究方向, 整个文件内容贴进去 |
    | `FEISHU_WEBHOOK_URL` | ✅ | 飞书群 → 设置 → 群机器人 → 添加自定义机器人 |
    | `FEISHU_KEYWORD` | 可选 | 若机器人开了"自定义关键词"安全策略, 填关键词 (建议 `options` 或 `radar`) |
@@ -68,9 +69,9 @@ pip install -r requirements.txt
 python src/fetch.py
 # → 检查 out/candidates.json 篇数 (预期 20-60 篇)
 
-# Stage 2: LLM 排序 (CI 同逻辑: GitHub Models 优先, 本机无 token 时走 claude CLI)
+# Stage 2: LLM 排序 (CI 同逻辑: Gemini 优先, 本机无 key 时走 claude CLI)
 $env:AGENDA = Get-Content agenda.md -Raw
-# 可选: $env:GITHUB_TOKEN = gh auth token   # 本地也想走 GitHub Models 时
+$env:GEMINI_API_KEY = "..."   # 本地也走 Gemini 时
 python src/brief.py
 # → 检查 out/brief.json sections 是否合理, ⭐long-dated tag 是否命中长期期权论文
 
