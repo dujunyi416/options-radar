@@ -1,7 +1,7 @@
-# Options Radar Archive · 122 篇 (103 已推送)
+# Options Radar Archive · 134 篇 (111 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-08-31 10:38 AEST
+> 最近更新: 2026-09-06 19:43 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
@@ -11,10 +11,34 @@
 - **2026-10-01** ✓ · `Journal of Banking and Finance` · [Opacity in security design: The role of post-issuance derivative trading](https://doi.org/10.1016/j.jbankfin.2026.107790) `options`
   - _Fabrizio Adriani, Subir Bose, Xing Gao_
 
-## 2026-W36 · 1 篇
+## 2026-W36 · 13 篇
 
+- **2026-09-03** ✓ · `arXiv q-fin.CP` · [Global Multi-Maturity SPX-VIX Calibration Beyond Markovian Stitching](https://arxiv.org/abs/2609.04087v1) `options`
+  - _Atithi Acharya, Yue Sun, Brandon Augustino, Shouvanik Chakrabarti, Shree Hari Su…_
+- **2026-09-02** ✓ · `arXiv q-fin.CP` · [Insights on Time-consistent Deep Hedging under Elicitable Dynamic Risk Measures](https://arxiv.org/abs/2609.02014v1) `options` `methodology`
+  - _Shuyi Zhang, Frédéric Godin_
+- **2026-09-02** ✓ · `Quantitative Finance` · [Refined expansions of the skew-stickiness ratio in stochastic volatility models](https://doi.org/10.1080/14697688.2026.2714860) `methodology`
+  - _F. Bourgey, J. Delemotte, S. De Marco_
+- **2026-09-02** · `Review of Derivatives Research` · [Does managerial ability affect financial derivatives usage? Evidence from China](https://doi.org/10.1007/s11147-026-09245-8) `options`
+  - _Kun Su, Miaomiao Zhang, Chengyun Liu, Tairan Kevin Huang, Yunhe Dong_
+- **2026-09-01** ✓ · `arXiv q-fin.CP` · [Adaptive singular-point method for pricing and hedging surrenderable equity-linked contracts](https://arxiv.org/abs/2609.01323v1) `⭐long-dated` `methodology`
+  - _Andrea Molent, Marcellino Gaudenzi_
+- **2026-09-01** · `arXiv q-fin.RM` · [Pricing the DeFi Tail: Do Protocols or Depositors Price Operational Risk?](https://arxiv.org/abs/2609.00911v1) `options`
+  - _Nils Bundi_
 - **2026-09-01** ✓ · `Journal of Financial Economics` · [Carbon VIX: Carbon price uncertainty and decarbonization investments](https://doi.org/10.1016/j.jfineco.2026.104328) `options`
   - _Maximilian Fuchs, Johannes Stroebel, Julian Terstegge_
+- **2026-08-31** ✓ · `arXiv q-fin.CP` · [Single- and Multilevel Quadrature with Error Control for Fourier Pricing under the Rough Heston Model](https://arxiv.org/abs/2609.00438v1) `methodology`
+  - _Chiheb Ben Hammouda, Abderrahmene Ben Romdhane, Michael Samet, Raul F. Tempone_
+- **2026-08-31** ✓ · `arXiv q-fin.CP` · [Latent-Space No-Arbitrage Geometry of Generative Models for Implied Volatility Surfaces](https://arxiv.org/abs/2609.00332v1) `options` `methodology`
+  - _Jing Wang, Shuaiqiang Liu, Cornelis Vuik_
+- **2026-08-31** ✓ · `arXiv q-fin.CP` · [Neural Calibration of a Complete Market Model](https://arxiv.org/abs/2608.30867v1) `options` `methodology`
+  - _Andrea Molent, Michel Vellekoop_
+- **2026-08-31** · `arXiv q-fin.MF` · [A note on markets with semi-static trading strategies](https://arxiv.org/abs/2608.30558v1) `options`
+  - _Miklós Rásonyi_
+- **2026-08-31** · `arXiv q-fin.MF` · [Optimal Block Time for AMM Liquidity Providers under Jump-Diffusion Prices](https://arxiv.org/abs/2608.30321v1) `methodology`
+  - _Nils Bundi_
+- **2026-08-31** ✓ · `Mathematical Finance` · [On Short‐Term Behavior of Implied Volatility for Index Options](https://doi.org/10.1111/mafi.70057) `options`
+  - _Huy N. Chau, Duy Nguyen, Thai Nguyen_
 
 ## 2026-W35 · 5 篇
 
