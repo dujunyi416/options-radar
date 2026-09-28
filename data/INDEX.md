@@ -1,7 +1,7 @@
-# Options Radar Archive · 141 篇 (82 已推送)
+# Options Radar Archive · 147 篇 (80 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-09-21 10:16 AEST
+> 最近更新: 2026-09-28 10:45 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
@@ -15,6 +15,21 @@
 
 - **2026-10-01** ✓ · `Journal of Banking and Finance` · [Opacity in security design: The role of post-issuance derivative trading](https://doi.org/10.1016/j.jbankfin.2026.107790) `options`
   - _Fabrizio Adriani, Subir Bose, Xing Gao_
+
+## 2026-W39 · 6 篇
+
+- **2026-09-22** ✓ · `arXiv q-fin.MF` · [Surface-Driven Stochastic Volatility for Commodity Options: Identification of Stochastic Vol-of-Vol and Leverage from Smile Dynamics](https://arxiv.org/abs/2609.27138v1) `options` `methodology`
+  - _Arthur Steve Tchoneteck, Tingjia Zhang, Frederi Viens_
+- **2026-09-22** ✓ · `arXiv q-fin.RM` · [Loss Choice or Model Choice? The Role of Forecast Level in Cryptocurrency Volatility Forecasting](https://arxiv.org/abs/2609.27024v1) `methodology`
+  - _Andrzej Tokajuk, Jarosław A. Chudziak_
+- **2026-09-22** ✓ · `arXiv q-fin.MF` · [Liquidity Provision and Rebate Design in Option Markets](https://arxiv.org/abs/2609.26606v1) `options` `methodology`
+  - _Samuel N. Cohen, Lyndon Drake, Zihan Guo, Christoph Reisinger_
+- **2026-09-22** ✓ · `arXiv q-fin.MF` · [Optimal Investment and Consumption in Financial Markets with Integrated Variance Clocks](https://arxiv.org/abs/2609.26349v1) `methodology`
+  - _Eduardo Abi Jaber, Florian Gutekunst, Martin Herdegen, David Hobson_
+- **2026-09-22** ✓ · `arXiv q-fin.MF` · [Modeling interest rate swap volatility with GARCH processes](https://arxiv.org/abs/2609.25965v1) `options` `methodology`
+  - _Michał Balcerek, Michał Wronka_
+- **2026-09-21** ✓ · `arXiv q-fin.RM` · [Risk diversification for infinitely divisible distributions](https://arxiv.org/abs/2609.25452v1) `methodology`
+  - _Peng Liu, Tiantian Mao_
 
 ## 2026-W38 · 5 篇
 
@@ -206,27 +221,27 @@
 
 ## 2026-W26 · 11 篇
 
-- **2026-06-26** ✓ · `Review of Derivatives Research` · [A Heston model with jumps and stochastic liquidity risk in European option pricing](https://doi.org/10.1007/s11147-026-09234-x) `options` `methodology`
+- **2026-06-26** · `Review of Derivatives Research` · [A Heston model with jumps and stochastic liquidity risk in European option pricing](https://doi.org/10.1007/s11147-026-09234-x) `options` `methodology`
   - _Parsa Yahyavi, Navideh Modarresi_
-- **2026-06-25** ✓ · `arXiv q-fin.CP` · [Valuing American options and Flexible Forwards contracts in time-dependent models](https://arxiv.org/abs/2606.27335v1) `options` `methodology`
+- **2026-06-25** · `arXiv q-fin.CP` · [Valuing American options and Flexible Forwards contracts in time-dependent models](https://arxiv.org/abs/2606.27335v1) `options` `methodology`
   - _Leif Andersen, Andrey Itkin, Rakhymzhan Kazbek_
 - **2026-06-25** · `arXiv q-fin.MF` · [Conditional Leibniz Derivative Estimation with an Application to American Call Min-Options](https://arxiv.org/abs/2606.27046v1) `options`
   - _Xingyu Ren, Michael C. Fu, Pierre L'Ecuyer_
-- **2026-06-24** ✓ · `arXiv q-fin.PR` · [Matrix Approximation of Bachelier Option Prices and Greeks under Stochastic Volatility models](https://arxiv.org/abs/2606.26024v1) `options` `methodology`
+- **2026-06-24** · `arXiv q-fin.PR` · [Matrix Approximation of Bachelier Option Prices and Greeks under Stochastic Volatility models](https://arxiv.org/abs/2606.26024v1) `options` `methodology`
   - _Elisa Alòs, Òscar Burés_
-- **2026-06-23** ✓ · `arXiv q-fin.CP` · [Randomized Neural Networks for estimation of exposure profiles and Credit Valuation Adjustment (CVA) for American Equity Options](https://arxiv.org/abs/2606.24309v1) `options` `methodology`
+- **2026-06-23** · `arXiv q-fin.CP` · [Randomized Neural Networks for estimation of exposure profiles and Credit Valuation Adjustment (CVA) for American Equity Options](https://arxiv.org/abs/2606.24309v1) `options` `methodology`
   - _Isidro Moroso Varona, Jakub Michańków, Paweł Sakowski_
 - **2026-06-22** · `arXiv q-fin.CP` · [Diagonal Frog: High-order positivity-preserving FD schemes for anisotropic Fokker-Planck equations](https://arxiv.org/abs/2606.23980v1) `options`
   - _Andrey Itkin_
-- **2026-06-22** ✓ · `arXiv q-fin.MF` · [Monotonicity of Normalized Implied-Volatility Coordinates under No-Arbitrage](https://arxiv.org/abs/2606.23883v1) `options`
+- **2026-06-22** · `arXiv q-fin.MF` · [Monotonicity of Normalized Implied-Volatility Coordinates under No-Arbitrage](https://arxiv.org/abs/2606.23883v1) `options`
   - _Jian Sun_
-- **2026-06-22** ✓ · `arXiv q-fin.CP` · [Analytic Pricing of Bermudan Swaptions with Few Exercise Dates](https://arxiv.org/abs/2606.23510v1) `options` `methodology`
+- **2026-06-22** · `arXiv q-fin.CP` · [Analytic Pricing of Bermudan Swaptions with Few Exercise Dates](https://arxiv.org/abs/2606.23510v1) `options` `methodology`
   - _Emiliano Papa_
 - **2026-06-22** · `arXiv q-fin.MF` · [Financial Frequency Combs](https://arxiv.org/abs/2606.23142v1) `options`
   - _Madhurendra Mishra, Armaan Aryan, Arsh Gogia, Adarsh Ganesan_
-- **2026-06-22** ✓ · `arXiv q-fin.MF` · [Path-dependent Affine Processes](https://arxiv.org/abs/2606.23099v1) `methodology`
+- **2026-06-22** · `arXiv q-fin.MF` · [Path-dependent Affine Processes](https://arxiv.org/abs/2606.23099v1) `methodology`
   - _Boris Günther, Thomas Kruse, Ludger Overbeck, Thorsten Schmidt_
-- **2026-06-22** ✓ · `arXiv q-fin.MF` · [Enhancing the Black-Scholes Model for Option Valuation via Lévy Processes and Malliavin Calculus](https://arxiv.org/abs/2606.22796v1) `options` `methodology`
+- **2026-06-22** · `arXiv q-fin.MF` · [Enhancing the Black-Scholes Model for Option Valuation via Lévy Processes and Malliavin Calculus](https://arxiv.org/abs/2606.22796v1) `options` `methodology`
   - _Shantanu Awasthi, Minglian Lin, Blair Faber, Michael Roberts, Hassan Butt_
 
 ## 2026-W25 · 9 篇
