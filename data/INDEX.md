@@ -1,7 +1,7 @@
-# Options Radar Archive · 147 篇 (80 已推送)
+# Options Radar Archive · 156 篇 (85 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-09-28 10:45 AEST
+> 最近更新: 2026-10-05 10:56 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
@@ -11,10 +11,28 @@
 - **2026-11-01** ✓ · `Journal of Banking and Finance` · [Option-implied tail asymmetry and bank mortgage pricing during monetary tightening](https://doi.org/10.1016/j.jbankfin.2026.107827) `options`
   - _Aditya Goel_
 
-## 2026-W40 · 1 篇
+## 2026-W40 · 10 篇
 
+- **2026-10-01** ✓ · `arXiv q-fin.CP` · [On the Pricing of American Options under Stochastic Local Volatility and Stochastic Correlation via the RBSDE Framework](https://arxiv.org/abs/2610.01187v1) `options` `methodology`
+  - _Long Teng_
+- **2026-10-01** · `arXiv q-fin.MF` · [Negative Oil & Nickel Squeeze: A Feedback Model for Extreme Commodity Futures Prices](https://arxiv.org/abs/2610.00951v1) `options`
+  - _Iosif Zimbidis, Ronnie Sircar_
+- **2026-10-01** ✓ · `Quantitative Finance` · [A new input convex neural network with application to options pricing](https://doi.org/10.1080/14697688.2026.2729193) `options`
+  - _Vincent Lemaire, Gilles Pagès, Christian Yeo_
 - **2026-10-01** ✓ · `Journal of Banking and Finance` · [Opacity in security design: The role of post-issuance derivative trading](https://doi.org/10.1016/j.jbankfin.2026.107790) `options`
   - _Fabrizio Adriani, Subir Bose, Xing Gao_
+- **2026-09-30** ✓ · `arXiv q-fin.CP` · [Stochastic Knothe-Rosenblatt: Light-speed Calibration of Stochastic Local Volatility Models](https://arxiv.org/abs/2609.39256v1) `options` `methodology`
+  - _Mathias Beiglböck, Manuel Hasenbichler, Gudmund Pammer_
+- **2026-09-29** ✓ · `arXiv q-fin.MF` · [Short-term barrier option price expansion](https://arxiv.org/abs/2610.00340v1) `options` `methodology`
+  - _Masaaki Fukasawa_
+- **2026-09-29** ✓ · `arXiv q-fin.CP` · [Dyson-Schwinger Effective-Action Methods for Rough Volatility: A Correlation-Response Architecture for Calibration, Exotics and Risk](https://arxiv.org/abs/2609.37741v1) `options` `methodology`
+  - _Frédéric Pauquay_
+- **2026-09-28** ✓ · `arXiv q-fin.MF` · [When Hedging Changes the Payoff: Option Replication with Price Impact and Execution Costs](https://arxiv.org/abs/2609.36257v1) `options`
+  - _David Itkin, Leandro Sánchez-Betancourt_
+- **2026-09-28** ✓ · `arXiv q-fin.MF` · [Basket implied volatility skew and stickiness](https://arxiv.org/abs/2609.38230v1) `options` `methodology`
+  - _Masaaki Fukasawa, Jun Maeda, Tatsuya Ogiwara_
+- **2026-09-28** ✓ · `arXiv q-fin.RM` · [Deep kernel hedging](https://arxiv.org/abs/2609.34474v1) `methodology`
+  - _Jean-Loup Dupret, Donatien Hainaut, Edouard Motte_
 
 ## 2026-W39 · 6 篇
 
@@ -212,11 +230,11 @@
 
 ## 2026-W27 · 3 篇
 
-- **2026-07-01** ✓ · `arXiv q-fin.MF` · [Tail Risk Management with Puts and Trend Following: A CVaR Framework for Crashes and Drawdowns](https://arxiv.org/abs/2607.00883v1) `options`
+- **2026-07-01** · `arXiv q-fin.MF` · [Tail Risk Management with Puts and Trend Following: A CVaR Framework for Crashes and Drawdowns](https://arxiv.org/abs/2607.00883v1) `options`
   - _Miquel Noguer I Alonso, Ali Al Fallouji_
-- **2026-06-30** ✓ · `Review of Financial Studies` · [Too Good to Be True: Look-Ahead Bias in Empirical Options Research](https://doi.org/10.1093/rfs/hhag061) `options`
+- **2026-06-30** · `Review of Financial Studies` · [Too Good to Be True: Look-Ahead Bias in Empirical Options Research](https://doi.org/10.1093/rfs/hhag061) `options`
   - _Jefferson Duarte, Christopher S Jones, Mehdi Khorram, Haitao Mo, Junbo L Wang_
-- **2026-06-29** ✓ · `Review of Derivatives Research` · [Stress-consistent macroprudential overlay for derivative pricing](https://doi.org/10.1007/s11147-026-09241-y) `options`
+- **2026-06-29** · `Review of Derivatives Research` · [Stress-consistent macroprudential overlay for derivative pricing](https://doi.org/10.1007/s11147-026-09241-y) `options`
   - _Keorapetse Leballo, Jules Clement Mba_
 
 ## 2026-W26 · 11 篇
