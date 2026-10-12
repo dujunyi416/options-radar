@@ -1,7 +1,7 @@
-# Options Radar Archive · 156 篇 (85 已推送)
+# Options Radar Archive · 164 篇 (84 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-10-05 10:56 AEST
+> 最近更新: 2026-10-12 11:21 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
@@ -10,6 +10,25 @@
 
 - **2026-11-01** ✓ · `Journal of Banking and Finance` · [Option-implied tail asymmetry and bank mortgage pricing during monetary tightening](https://doi.org/10.1016/j.jbankfin.2026.107827) `options`
   - _Aditya Goel_
+
+## 2026-W41 · 8 篇
+
+- **2026-10-09** ✓ · `arXiv q-fin.PR` · [FOMO: FLEX Options and Market Outcomes](https://arxiv.org/abs/2610.13044v1) `options`
+  - _Shivesh Prakash, Frank Ferstler, Nicholas Pezolano_
+- **2026-10-09** · `arXiv q-fin.CP` · [The Financing of Debt Relief: Intermediary Liquidity and the Value of Borrower Information](https://arxiv.org/abs/2610.12875v1) `options`
+  - _Arka P. Bandyopadhyay_
+- **2026-10-08** ✓ · `arXiv q-fin.MF` · [Restricted Entropic and Quadratic Hedging in the Small-Risk-Aversion Limit](https://arxiv.org/abs/2610.12594v1) `methodology`
+  - _Jonas Hanetho_
+- **2026-10-08** ✓ · `Quantitative Finance` · [Implied volatility as a quantile](https://doi.org/10.1080/14697688.2026.2721562) `options`
+  - _Wolfgang Schadner_
+- **2026-10-05** ✓ · `arXiv q-fin.CP` · [Adversarial Training for Deep Hedging in Nonstationary Markets](https://arxiv.org/abs/2610.07162v1) `methodology`
+  - _Philipp J. Schneider, Lukas Looser, Antoine Garin, Shuhan Liu, Daniel Kuhn_
+- **2026-10-05** ✓ · `arXiv q-fin.MF` · [Retirement Planning with Minimum Guarantees for Both Beneficiaries and Fund Managers](https://arxiv.org/abs/2610.06504v1) `options`
+  - _Zhaojie Ren, Sheng Wang, Tak Kwong Wong, Sheung Chi Phillip Yam_
+- **2026-10-05** ✓ · `arXiv q-fin.CP` · [A posteriori error bounds for the Uncertain Volatility Model](https://arxiv.org/abs/2610.06495v1) `options` `methodology`
+  - _Lokman A Abbas-Turki, Chassagneux Jean-Fran{\c c}ois, Jean-Philippe Lemor, Gr{é}…_
+- **2026-10-05** ✓ · `arXiv q-fin.MF` · [Model Risk Analysis for Entropic Hedging Strategies](https://arxiv.org/abs/2610.06168v1) `options` `methodology`
+  - _Paul McCloud_
 
 ## 2026-W40 · 10 篇
 
@@ -81,7 +100,7 @@
   - _Andrea Molent, Marcellino Gaudenzi_
 - **2026-09-01** ✓ · `arXiv q-fin.RM` · [Pricing the DeFi Tail: Do Protocols or Depositors Price Operational Risk?](https://arxiv.org/abs/2609.00911v1) `options`
   - _Nils Bundi_
-- **2026-09-01** ✓ · `Journal of Financial Economics` · [Carbon VIX: Carbon price uncertainty and decarbonization investments](https://doi.org/10.1016/j.jfineco.2026.104328) `options`
+- **2026-09-01** · `Journal of Financial Economics` · [Carbon VIX: Carbon price uncertainty and decarbonization investments](https://doi.org/10.1016/j.jfineco.2026.104328) `options`
   - _Maximilian Fuchs, Johannes Stroebel, Julian Terstegge_
 - **2026-08-31** ✓ · `arXiv q-fin.CP` · [Single- and Multilevel Quadrature with Error Control for Fourier Pricing under the Rough Heston Model](https://arxiv.org/abs/2609.00438v1) `methodology`
   - _Chiheb Ben Hammouda, Abderrahmene Ben Romdhane, Michael Samet, Raul F. Tempone_
@@ -211,21 +230,21 @@
 
 ## 2026-W28 · 8 篇
 
-- **2026-07-11** ✓ · `Journal of Derivatives` · [Quality versus Quantity: Evidence from Machine Learning Option Pricing](https://doi.org/10.3905/jod.2026.009) `options` `methodology`
+- **2026-07-11** · `Journal of Derivatives` · [Quality versus Quantity: Evidence from Machine Learning Option Pricing](https://doi.org/10.3905/jod.2026.009) `options` `methodology`
   - _Raquel M. Gaspar_
-- **2026-07-09** ✓ · `arXiv q-fin.MF` · [Estimating the Stochastic Discount Factor from Option Prices and Predicting the Equity Premium](https://arxiv.org/abs/2607.08500v1) `options` `methodology`
+- **2026-07-09** · `arXiv q-fin.MF` · [Estimating the Stochastic Discount Factor from Option Prices and Predicting the Equity Premium](https://arxiv.org/abs/2607.08500v1) `options` `methodology`
   - _Kenichiro Shiraya, Tomohisa Yamakami, Akira Yamazaki_
-- **2026-07-07** ✓ · `arXiv q-fin.MF` · [Entropic Dynamics of Jump-Diffusion Option Pricing](https://arxiv.org/abs/2607.06355v1) `options` `methodology`
+- **2026-07-07** · `arXiv q-fin.MF` · [Entropic Dynamics of Jump-Diffusion Option Pricing](https://arxiv.org/abs/2607.06355v1) `options` `methodology`
   - _Mohammad Abedi_
-- **2026-07-07** ✓ · `arXiv q-fin.CP` · [Signature-based identification of volatility models from path geometry](https://arxiv.org/abs/2607.06340v1) `methodology`
+- **2026-07-07** · `arXiv q-fin.CP` · [Signature-based identification of volatility models from path geometry](https://arxiv.org/abs/2607.06340v1) `methodology`
   - _Òscar Burés, Rafael De Santiago_
-- **2026-07-07** ✓ · `arXiv q-fin.CP` · [Arbitrage-Free Multi-Maturity Risk-Neutral Marginals](https://arxiv.org/abs/2607.06204v1) `options` `methodology`
+- **2026-07-07** · `arXiv q-fin.CP` · [Arbitrage-Free Multi-Maturity Risk-Neutral Marginals](https://arxiv.org/abs/2607.06204v1) `options` `methodology`
   - _Hao Qin, Ruozhong Yang, Charlie Che, Liming Feng_
 - **2026-07-06** · `arXiv q-fin.MF` · [Reaction-boundary variance and adjoint-consistent local-volatility projection](https://arxiv.org/abs/2607.05011v2) `methodology`
   - _Chris Angstmann, Tim Gebbie_
-- **2026-07-06** ✓ · `Review of Derivatives Research` · [Selective forgetting in option calibration: an operator-theoretic Gauss–Newton framework](https://doi.org/10.1007/s11147-026-09243-w) `options`
+- **2026-07-06** · `Review of Derivatives Research` · [Selective forgetting in option calibration: an operator-theoretic Gauss–Newton framework](https://doi.org/10.1007/s11147-026-09243-w) `options`
   - _Ahmet Umur Özsoy_
-- **2026-07-06** ✓ · `Review of Derivatives Research` · [Anomalies and optionability](https://doi.org/10.1007/s11147-026-09242-x) `options`
+- **2026-07-06** · `Review of Derivatives Research` · [Anomalies and optionability](https://doi.org/10.1007/s11147-026-09242-x) `options`
   - _Julian Böll, Julian Thimme, Marliese Uhrig-Homburg_
 
 ## 2026-W27 · 3 篇
