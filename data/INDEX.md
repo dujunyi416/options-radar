@@ -1,7 +1,7 @@
-# Options Radar Archive · 164 篇 (84 已推送)
+# Options Radar Archive · 175 篇 (87 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-10-12 11:21 AEST
+> 最近更新: 2026-10-19 10:15 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
@@ -10,6 +10,31 @@
 
 - **2026-11-01** ✓ · `Journal of Banking and Finance` · [Option-implied tail asymmetry and bank mortgage pricing during monetary tightening](https://doi.org/10.1016/j.jbankfin.2026.107827) `options`
   - _Aditya Goel_
+
+## 2026-W42 · 11 篇
+
+- **2026-10-15** ✓ · `arXiv q-fin.MF` · [Feeling the generalised rough SABR boundary](https://arxiv.org/abs/2610.21841v1) `methodology`
+  - _Masaaki Fukasawa, Antoine Jacquier, Mugad Oumgari_
+- **2026-10-15** · `arXiv q-fin.MF` · [The end-of-month option in futures contracts and the Gittins index of holding the underlying](https://arxiv.org/abs/2610.21196v1) `options`
+  - _Erhan Bayraktar_
+- **2026-10-15** ✓ · `arXiv q-fin.CP` · [Pricing American Commodity Options Under the Schwartz Two-Factor Model Using the Alternating Direction Explicit (ADE) Method](https://arxiv.org/abs/2610.21145v1) `options`
+  - _Sanjith Prabhu, Daniel J. Duffy_
+- **2026-10-14** ✓ · `arXiv q-fin.MF` · [Regime Detection in Latent Factor Models -- A Bayesian Decision-Theoretic Approach](https://arxiv.org/abs/2610.20366v1) `methodology`
+  - _Karl Kristian Engelund_
+- **2026-10-14** ✓ · `arXiv q-fin.MF` · [Interior smoothness and zero-variance geometry for finite-maturity Heston American puts](https://arxiv.org/abs/2610.20000v1) `options` `methodology`
+  - _Junkee Jeon, Takwon Kim, Jehan Oh_
+- **2026-10-14** ✓ · `Quantitative Finance` · [Dynamic fund protection in markets with stochastic volatility and frictions: a double Heston model with transaction costs and its applications](https://doi.org/10.1080/14697688.2026.2720658) `methodology`
+  - _Shuhua Zhang, Yilin Cheng, Xinyu Wang, Shenghua Qian_
+- **2026-10-13** ✓ · `arXiv q-fin.CP` · [Beyond Time Induction: Structured Conditional Neural Solvers for Parametric Stochastic-Volatility Pricing](https://arxiv.org/abs/2610.19254v1) `options` `methodology`
+  - _Jose Miguel Lara Rangel, Mixtli Vazquez Mendoza_
+- **2026-10-13** ✓ · `arXiv q-fin.CP` · [A GLE-LSV model with state-dependent leverage and colored noise](https://arxiv.org/abs/2610.18706v1) `options` `methodology`
+  - _Andrey Itkin_
+- **2026-10-13** ✓ · `Journal of Finance` · [Risk, Specialization, and Covered‐Interest Parity](https://doi.org/10.1111/jofi.70095) `options`
+  - _TOBIAS J. MOSKOWITZ, CHASE P. ROSS, SHARON Y. ROSS, KAUSHIK VASUDEVAN_
+- **2026-10-12** ✓ · `arXiv q-fin.CP` · [GROMM: Generative Risk-neutral Option Market Models](https://arxiv.org/abs/2610.16732v1) `options` `methodology`
+  - _Magnus Wiese, Hans Buehler, Blanka Horvath_
+- **2026-10-12** ✓ · `arXiv q-fin.CP` · [Reinforcement Learning with Hawkes-Structured Networks for Market Making](https://arxiv.org/abs/2610.16524v1) `methodology`
+  - _Fernando Acero, Philipp Plank, Yufei Zhang_
 
 ## 2026-W41 · 8 篇
 
@@ -213,19 +238,19 @@
 
 ## 2026-W29 · 7 篇
 
-- **2026-07-17** ✓ · `arXiv q-fin.MF` · [Consistent pricing of bivariate interest rate exotics via constrained Schrödinger optimal transport](https://arxiv.org/abs/2607.15952v1) `options`
+- **2026-07-17** · `arXiv q-fin.MF` · [Consistent pricing of bivariate interest rate exotics via constrained Schrödinger optimal transport](https://arxiv.org/abs/2607.15952v1) `options`
   - _Patrick Roome_
-- **2026-07-16** ✓ · `arXiv q-fin.CP` · [Structure-Aware Variational State Preparation for Quantum Basket Option Pricing](https://arxiv.org/abs/2607.14518v1) `options`
+- **2026-07-16** · `arXiv q-fin.CP` · [Structure-Aware Variational State Preparation for Quantum Basket Option Pricing](https://arxiv.org/abs/2607.14518v1) `options`
   - _Dongwoo Kim, Zhenyu Cui, Daniel K. Park, Chihoon Lee_
-- **2026-07-15** ✓ · `arXiv q-fin.CP` · [NeuralChaos: Optimal Adapted Approximation of Square Integrable Predictable Processes](https://arxiv.org/abs/2607.14361v1) `methodology`
+- **2026-07-15** · `arXiv q-fin.CP` · [NeuralChaos: Optimal Adapted Approximation of Square Integrable Predictable Processes](https://arxiv.org/abs/2607.14361v1) `methodology`
   - _Anastasis Kratsios, Giulia Livieri, Philipp Schmocker_
-- **2026-07-15** ✓ · `arXiv q-fin.CP` · [Is Deep Hedging Reinforcement Learning?](https://arxiv.org/abs/2607.13353v2) `methodology`
+- **2026-07-15** · `arXiv q-fin.CP` · [Is Deep Hedging Reinforcement Learning?](https://arxiv.org/abs/2607.13353v2) `methodology`
   - _Frédéric Godin_
-- **2026-07-15** ✓ · `Mathematical Finance` · [On the Exact Limiting Distribution of a Volatility Target Index](https://doi.org/10.1111/mafi.70044) `options`
+- **2026-07-15** · `Mathematical Finance` · [On the Exact Limiting Distribution of a Volatility Target Index](https://doi.org/10.1111/mafi.70044) `options`
   - _Xuan Liu, Michel Gauthier_
-- **2026-07-14** ✓ · `arXiv q-fin.MF` · [Ito-Wentzell Formula and Dupire Stochastic PDE](https://arxiv.org/abs/2607.12479v2) `options` `methodology`
+- **2026-07-14** · `arXiv q-fin.MF` · [Ito-Wentzell Formula and Dupire Stochastic PDE](https://arxiv.org/abs/2607.12479v2) `options` `methodology`
   - _Vladimir Lucic_
-- **2026-07-14** ✓ · `Journal of Derivatives` · [Reexamining the Relationship between Financial Market Illiquidity and Option Returns: Evidence from China](https://doi.org/10.3905/jod.2026.010) `options`
+- **2026-07-14** · `Journal of Derivatives` · [Reexamining the Relationship between Financial Market Illiquidity and Option Returns: Evidence from China](https://doi.org/10.3905/jod.2026.010) `options`
   - _Qiang Chen, Ying Huang_
 
 ## 2026-W28 · 8 篇
