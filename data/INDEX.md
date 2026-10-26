@@ -1,7 +1,7 @@
-# Options Radar Archive · 175 篇 (87 已推送)
+# Options Radar Archive · 180 篇 (86 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-10-19 10:15 AEST
+> 最近更新: 2026-10-26 10:21 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
@@ -10,6 +10,19 @@
 
 - **2026-11-01** ✓ · `Journal of Banking and Finance` · [Option-implied tail asymmetry and bank mortgage pricing during monetary tightening](https://doi.org/10.1016/j.jbankfin.2026.107827) `options`
   - _Aditya Goel_
+
+## 2026-W43 · 5 篇
+
+- **2026-10-22** ✓ · `arXiv q-fin.PR` · [Multiple Stopping and Exercise Boundaries for American Put Options](https://arxiv.org/abs/2610.30637v1) `options`
+  - _Katsunori Ano_
+- **2026-10-22** ✓ · `Journal of Finance` · [Excess Movement in Option‐Implied Beliefs](https://doi.org/10.1111/jofi.70086) `options`
+  - _NED AUGENBLICK, EBEN LAZARUS_
+- **2026-10-20** ✓ · `arXiv q-fin.CP` · [DSINC beyond Heston: the 3/2 and other non-affine stochastic-volatility models](https://arxiv.org/abs/2610.28847v1) `options` `methodology`
+  - _Andrey Itkin_
+- **2026-10-20** ✓ · `arXiv q-fin.PR` · [Arithmetic Models for Commodity Futures, Vanilla, and Calendar Spread Options](https://arxiv.org/abs/2610.28071v1) `options` `methodology`
+  - _Malthe Rauh Johansen, Nina Lange, David Skovmand_
+- **2026-10-19** ✓ · `arXiv q-fin.RM` · [Deep catastrophic-risk-aware reinforcement learning](https://arxiv.org/abs/2610.27214v1) `methodology`
+  - _Carlos Pérez Octavio Mendoza, Frédéric Godin_
 
 ## 2026-W42 · 11 篇
 
@@ -223,17 +236,17 @@
 
 ## 2026-W30 · 6 篇
 
-- **2026-07-24** ✓ · `Journal of Derivatives` · [Utility Indifference Valuation for Defaultable Claims under a Structural Model with Hawkes Jump-Diffusion Processes](https://doi.org/10.3905/jod.2026.012) `methodology`
+- **2026-07-24** · `Journal of Derivatives` · [Utility Indifference Valuation for Defaultable Claims under a Structural Model with Hawkes Jump-Diffusion Processes](https://doi.org/10.3905/jod.2026.012) `methodology`
   - _Ayu Xie, Xiaosong Qian_
-- **2026-07-24** ✓ · `Review of Derivatives Research` · [Correction: An integrated optimisation model for pricing and hedging oil derivatives](https://doi.org/10.1007/s11147-026-09239-6) `options`
+- **2026-07-24** · `Review of Derivatives Research` · [Correction: An integrated optimisation model for pricing and hedging oil derivatives](https://doi.org/10.1007/s11147-026-09239-6) `options`
   - _Teemu Pennanen, Luciane Sbaraini Bonatto_
-- **2026-07-23** ✓ · `Journal of Finance` · [Do Equity and Options Markets Agree about Volatility?](https://doi.org/10.1111/jofi.70070) `options`
+- **2026-07-23** · `Journal of Finance` · [Do Equity and Options Markets Agree about Volatility?](https://doi.org/10.1111/jofi.70070) `options`
   - _CARSTEN H. CHONG, VIKTOR TODOROV_
-- **2026-07-23** ✓ · `Quantitative Finance` · [Options markets as political forecasts: insights from the 2024 U.S. presidential race](https://doi.org/10.1080/14697688.2026.2674154) `options`
+- **2026-07-23** · `Quantitative Finance` · [Options markets as political forecasts: insights from the 2024 U.S. presidential race](https://doi.org/10.1080/14697688.2026.2674154) `options`
   - _Sebastian M. Saiegh_
-- **2026-07-21** ✓ · `arXiv q-fin.CP` · [Pricing options on illiquid assets using liquid market benchmarks: an application to energy markets](https://arxiv.org/abs/2607.19030v1) `options` `methodology`
+- **2026-07-21** · `arXiv q-fin.CP` · [Pricing options on illiquid assets using liquid market benchmarks: an application to energy markets](https://arxiv.org/abs/2607.19030v1) `options` `methodology`
   - _Federico Aluigi, Lucia Caramellino, Paolo Pigato, Edoardo Scrima_
-- **2026-07-21** ✓ · `Quantitative Finance` · [On the correlations in linearized multivariate stochastic volatility models](https://doi.org/10.1080/14697688.2026.2690262) `methodology`
+- **2026-07-21** · `Quantitative Finance` · [On the correlations in linearized multivariate stochastic volatility models](https://doi.org/10.1080/14697688.2026.2690262) `methodology`
   - _Karim Moussa_
 
 ## 2026-W29 · 7 篇
