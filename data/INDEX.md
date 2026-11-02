@@ -1,15 +1,29 @@
-# Options Radar Archive · 180 篇 (86 已推送)
+# Options Radar Archive · 187 篇 (83 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-10-26 10:21 AEST
+> 最近更新: 2026-11-02 11:31 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
 
-## 2026-W44 · 1 篇
+## 2026-W44 · 8 篇
 
 - **2026-11-01** ✓ · `Journal of Banking and Finance` · [Option-implied tail asymmetry and bank mortgage pricing during monetary tightening](https://doi.org/10.1016/j.jbankfin.2026.107827) `options`
   - _Aditya Goel_
+- **2026-10-31** ✓ · `Journal of Derivatives` · [A Structural Volatility Surface Under Stress and Low Liquidity Conditions](https://doi.org/10.3905/jod.2026.019) `options`
+  - _Mario Kobayashi_
+- **2026-10-30** ✓ · `Journal of Derivatives` · [The Physical Mean as a Practitioner Benchmark for Option Pricing through Feasible Hedging](https://doi.org/10.3905/jod.2026.017) `options`
+  - _Nikolaos Halidias_
+- **2026-10-29** ✓ · `arXiv q-fin.RM` · [Information Flow and Market Risk: Transformer-Based Evidence on Sentiment and Volatility Dynamics](https://arxiv.org/abs/2610.39636v1) `options`
+  - _Szymon Lis, Robert Ślepaczuk, Paweł Sakowski_
+- **2026-10-28** ✓ · `arXiv q-fin.PR` · [Negative Convexity in Pass-Through MBS: Mechanisms and Conditions](https://arxiv.org/abs/2610.38275v1) `options`
+  - _Kaname Imagawa_
+- **2026-10-27** ✓ · `arXiv q-fin.MF` · [A Deep Learning-Driven Operator Splitting Scheme for Free Boundary Problems: An Application to American Option Pricing in Incomplete Markets](https://arxiv.org/abs/2610.36921v1) `options` `methodology`
+  - _Dong Yan, Haocheng Zhu, Yao Li_
+- **2026-10-26** ✓ · `arXiv q-fin.PR` · [The Term Structure of Implied Fee Rates in Liquidity Pools](https://arxiv.org/abs/2610.36392v1) `options` `methodology`
+  - _Diogo Duarte, Lucas X. Ferreira, Emmanuel Gobet, Yuri F. Saporito_
+- **2026-10-26** ✓ · `arXiv q-fin.MF` · [Differentiability and Convexity of the Solution Maps for Fully Non-linear Parabolic HJB Equations](https://arxiv.org/abs/2610.35476v1) `options`
+  - _Jean-François Chassagneux, Stéphane Crépey, Grégoire Loeper, Justin Ruelland_
 
 ## 2026-W43 · 5 篇
 
@@ -211,27 +225,27 @@
 
 - **2026-07-30** · `arXiv q-fin.RM` · [Almost stochastic dominance via optimal transport](https://arxiv.org/abs/2607.28215v1) `options`
   - _Alfred Müller, Johannes Wiesel_
-- **2026-07-30** ✓ · `arXiv q-fin.MF` · [Multi-maturity consistency of option prices under bounded bid-ask spreads: a minimal obstruction and an exact two-date basket operator](https://arxiv.org/abs/2607.27649v1) `options`
+- **2026-07-30** · `arXiv q-fin.MF` · [Multi-maturity consistency of option prices under bounded bid-ask spreads: a minimal obstruction and an exact two-date basket operator](https://arxiv.org/abs/2607.27649v1) `options`
   - _Minhyeok Lee_
 - **2026-07-30** · `arXiv q-fin.RM` · [AWARE-FX: An Auditable Knowledge-Guided AI System for Measuring Corporate Foreign-Exchange Hedging Disclosure](https://arxiv.org/abs/2607.27611v1) `options`
   - _Qi Wang_
-- **2026-07-30** ✓ · `arXiv q-fin.MF` · [Local Stochastic Rough Volatility: Pathwise Filtering and the Conditional Density Equation](https://arxiv.org/abs/2607.27588v1) `methodology`
+- **2026-07-30** · `arXiv q-fin.MF` · [Local Stochastic Rough Volatility: Pathwise Filtering and the Conditional Density Equation](https://arxiv.org/abs/2607.27588v1) `methodology`
   - _Damiano Brigo, Vladimir Lucic_
-- **2026-07-30** ✓ · `Journal of Derivatives` · [Crude Oil Options Stochastic Volatility Jump or Co-Jump: Evidence from Price Paths Stimulation](https://doi.org/10.3905/jod.2026.013) `options` `methodology`
+- **2026-07-30** · `Journal of Derivatives` · [Crude Oil Options Stochastic Volatility Jump or Co-Jump: Evidence from Price Paths Stimulation](https://doi.org/10.3905/jod.2026.013) `options` `methodology`
   - _A. Bouteska, Xinyi Wang, Shikuan Zhao_
-- **2026-07-29** ✓ · `arXiv q-fin.CP` · [Inverse Learning of Latent Risk-Neutral Densities from Irregular Option Quotes](https://arxiv.org/abs/2607.27188v1) `options`
+- **2026-07-29** · `arXiv q-fin.CP` · [Inverse Learning of Latent Risk-Neutral Densities from Irregular Option Quotes](https://arxiv.org/abs/2607.27188v1) `options`
   - _Lennon J. Shikhman, Michael Galarnyk, Aadi Dash, Nicholas A. Welsh_
-- **2026-07-28** ✓ · `arXiv q-fin.CP` · [How Likely and How Deep? Sharp Joint Bounds on Risk-Neutral Crash Probability and Conditional Depth from Option Bid-Ask Quotes](https://arxiv.org/abs/2607.25353v1) `options` `methodology`
+- **2026-07-28** · `arXiv q-fin.CP` · [How Likely and How Deep? Sharp Joint Bounds on Risk-Neutral Crash Probability and Conditional Depth from Option Bid-Ask Quotes](https://arxiv.org/abs/2607.25353v1) `options` `methodology`
   - _Jirong Zhuang_
-- **2026-07-28** ✓ · `arXiv q-fin.RM` · [Robust Hedging Valuation Adjustment for Deep Hedging Policies under Market Frictions](https://arxiv.org/abs/2607.25258v1) `options` `methodology`
+- **2026-07-28** · `arXiv q-fin.RM` · [Robust Hedging Valuation Adjustment for Deep Hedging Policies under Market Frictions](https://arxiv.org/abs/2607.25258v1) `options` `methodology`
   - _Takayuki Sakuma_
-- **2026-07-28** ✓ · `arXiv q-fin.CP` · [RIDGE: An Autonomous Framework for Validation and Method Discovery in LLM-Generated Option Pricing](https://arxiv.org/abs/2607.25199v2) `options` `methodology`
+- **2026-07-28** · `arXiv q-fin.CP` · [RIDGE: An Autonomous Framework for Validation and Method Discovery in LLM-Generated Option Pricing](https://arxiv.org/abs/2607.25199v2) `options` `methodology`
   - _Liexin Cheng, Xue Cheng, Shuaiqiang Liu, Cornelis W. Oosterlee_
-- **2026-07-28** ✓ · `arXiv q-fin.CP` · [Quantum Transformer BSDE Solver via Multi-Layer Fully-Connected Variational Quantum Circuits](https://arxiv.org/abs/2607.25162v1) `methodology`
+- **2026-07-28** · `arXiv q-fin.CP` · [Quantum Transformer BSDE Solver via Multi-Layer Fully-Connected Variational Quantum Circuits](https://arxiv.org/abs/2607.25162v1) `methodology`
   - _Howard Su, Huan-Hsin Tseng, Chi-Sheng Chen, Lance Bai_
-- **2026-07-28** ✓ · `Review of Derivatives Research` · [Multivariate Gauss-Hermite expansions and applications to option pricing](https://doi.org/10.1007/s11147-026-09240-z) `options`
+- **2026-07-28** · `Review of Derivatives Research` · [Multivariate Gauss-Hermite expansions and applications to option pricing](https://doi.org/10.1007/s11147-026-09240-z) `options`
   - _Xingchun Wang, Xuewen Zhao_
-- **2026-07-27** ✓ · `arXiv q-fin.CP` · [One Other Option Pricing Scheme](https://arxiv.org/abs/2607.24680v1) `options`
+- **2026-07-27** · `arXiv q-fin.CP` · [One Other Option Pricing Scheme](https://arxiv.org/abs/2607.24680v1) `options`
   - _Jimin Lin_
 
 ## 2026-W30 · 6 篇
