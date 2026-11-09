@@ -1,10 +1,23 @@
-# Options Radar Archive · 187 篇 (83 已推送)
+# Options Radar Archive · 192 篇 (84 已推送)
 
 > 所有命中关键词的论文 (不论是否最终被推送). 按论文发表周倒序.
-> 最近更新: 2026-11-02 11:31 AEST
+> 最近更新: 2026-11-09 11:45 AEST
 > `✓` = 已推送到飞书 (即出现在某次 brief 里). 按 Ctrl/Cmd + F 搜索.
 > JSON 原始档案: [archive.jsonl](archive.jsonl)
 
+
+## 2026-W45 · 5 篇
+
+- **2026-11-05** ✓ · `arXiv q-fin.PR` · [Information-Theoretic Model for the Growth Optimal Portfolio of Stocks](https://arxiv.org/abs/2611.07457v1) `options`
+  - _Eckhard Platen, Kevin Fergusson_
+- **2026-11-04** ✓ · `arXiv q-fin.MF` · [A Rough Instantaneous Squared VIX Model for Term Structure and Option Pricing](https://arxiv.org/abs/2611.07120v1) `options` `methodology`
+  - _Tianfeng Yang, Wen Su, Blanka Horvath_
+- **2026-11-04** ✓ · `arXiv q-fin.CP` · [Hard to Fool: A Bounded LLM Research Loop for Quantitative Finance, and What Two Dozen Campaigns Found](https://arxiv.org/abs/2611.06607v1) `options` `methodology`
+  - _Henry Zhang_
+- **2026-11-04** ✓ · `Quantitative Finance` · [Alternative models for FX, arbitrage opportunities and efficient pricing of double barrier options in regime-switching Lévy models](https://doi.org/10.1080/14697688.2026.2747751) `options` `methodology`
+  - _Svetlana Boyarchenko, Sergei Levendorskiĭ_
+- **2026-11-03** ✓ · `Review of Financial Studies` · [Forward Return Expectations](https://doi.org/10.1093/rfs/hhag096) `options`
+  - _Mihir Gandhi, Niels Joachim Gormsen, Eben Lazarus_
 
 ## 2026-W44 · 8 篇
 
@@ -212,13 +225,13 @@
 
 - **2026-08-06** · `arXiv q-fin.MF` · [Non-concave Corporate Management with Option Incentives under Value-at-Risk Constraint](https://arxiv.org/abs/2608.05623v1) `options`
   - _Wenyuan Li, Haoqi Lyu, Pengyu Wei_
-- **2026-08-05** ✓ · `arXiv q-fin.CP` · [Robust Control under Stationary Ambiguity](https://arxiv.org/abs/2608.04832v1) `options`
+- **2026-08-05** · `arXiv q-fin.CP` · [Robust Control under Stationary Ambiguity](https://arxiv.org/abs/2608.04832v1) `options`
   - _Konrad J. Mueller, Amira Akkari, Ben Wood, Lukas Gonon_
-- **2026-08-04** ✓ · `arXiv q-fin.MF` · [The Mathematics of Volatility Surfaces](https://arxiv.org/abs/2608.05198v1) `options` `methodology`
+- **2026-08-04** · `arXiv q-fin.MF` · [The Mathematics of Volatility Surfaces](https://arxiv.org/abs/2608.05198v1) `options` `methodology`
   - _Miquel Noguer i Alonso_
-- **2026-08-04** ✓ · `arXiv q-fin.MF` · [Option Pricing with Time-Changed Fractional Brownian Motion: A Fractional Variance Gamma Model](https://arxiv.org/abs/2608.03925v1) `options`
+- **2026-08-04** · `arXiv q-fin.MF` · [Option Pricing with Time-Changed Fractional Brownian Motion: A Fractional Variance Gamma Model](https://arxiv.org/abs/2608.03925v1) `options`
   - _Robert Jarrow, Jayen Tan_
-- **2026-08-03** ✓ · `arXiv q-fin.CP` · [Neural Networks with Local Converging Inputs for Efficient Options Pricing Models](https://arxiv.org/abs/2608.02778v1) `options` `methodology`
+- **2026-08-03** · `arXiv q-fin.CP` · [Neural Networks with Local Converging Inputs for Efficient Options Pricing Models](https://arxiv.org/abs/2608.02778v1) `options` `methodology`
   - _Harris Cobb, Wenbo Hao, Yingjie Liu_
 
 ## 2026-W31 · 12 篇
